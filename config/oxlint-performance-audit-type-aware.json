@@ -11,7 +11,6 @@
     "nursery": "off"
   },
   "rules": {
-    "typescript/no-misused-promises": "warn",
     "typescript/require-await": "warn"
   },
   "ignorePatterns": ["**/node_modules", "**/dist", "**/out", "**/*.test.*", "**/*.spec.*"]
