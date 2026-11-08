@@ -382,8 +382,8 @@ describe('OrcaRuntimeService', () => {
       kind: 'command-finished',
       exitCode: 0
     })
-    runtime.onPtyExit('pty-restored-exit', 0, 'restored-exit')
-    runtime.onPtyExit('pty-ordinary-shell', 0, 'ordinary-shell')
+    void runtime.onPtyExit('pty-restored-exit', 0, 'restored-exit')
+    void runtime.onPtyExit('pty-ordinary-shell', 0, 'ordinary-shell')
 
     expect(retireAuthority).toHaveBeenCalledWith(firstPane)
     expect(retireAuthority).toHaveBeenCalledWith(secondPane)

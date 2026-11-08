@@ -302,7 +302,7 @@ describe('OrcaRuntimeService', () => {
 
     const [terminal] = (await runtime.listTerminals()).terminals
     const waitPromise = runtime.waitForTerminal(terminal.handle, { timeoutMs: 1000 })
-    runtime.onPtyExit('pty-1', 7)
+    void runtime.onPtyExit('pty-1', 7)
 
     await expect(waitPromise).resolves.toMatchObject({
       handle: terminal.handle,

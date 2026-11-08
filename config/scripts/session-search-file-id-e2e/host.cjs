@@ -299,7 +299,7 @@ async function disableAndCheck() {
   assert.deepEqual(inspect(markers.disabled).sessions, [])
   record('disabled-no-indexing')
 }
-app.whenReady().then(async () => {
+void app.whenReady().then(async () => {
   try {
     await run()
     report.ok = true

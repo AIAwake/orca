@@ -667,7 +667,7 @@ it('a cold default host cannot import the previously focused host account or row
   if (!settings) {
     throw new Error('fixture requires captured host settings')
   }
-  act(() =>
+  void act(() =>
     pickerStore.setState({ settings: { ...settings, activeRuntimeEnvironmentId: 'other' } })
   )
   expect(screen.queryByText(/Task/)).toBeNull()

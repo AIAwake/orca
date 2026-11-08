@@ -31,7 +31,7 @@ export function registerClaudeAgentTeamsPtyExitLeakTests(): void {
       registerTeam(runtime, 'pty-leader', 'handle-leader')
       expect(internals(runtime).claudeAgentTeams.getActiveTeamCount()).toBe(1)
 
-      runtime.onPtyExit('pty-leader', 0)
+      void runtime.onPtyExit('pty-leader', 0)
 
       expect(internals(runtime).claudeAgentTeams.getActiveTeamCount()).toBe(0)
     })
@@ -50,7 +50,7 @@ export function registerClaudeAgentTeamsPtyExitLeakTests(): void {
       const runtime = new OrcaRuntimeService()
       for (let i = 0; i < 100; i++) {
         registerTeam(runtime, `pty-${i}`, `handle-${i}`)
-        runtime.onPtyExit(`pty-${i}`, 0)
+        void runtime.onPtyExit(`pty-${i}`, 0)
       }
       expect(internals(runtime).claudeAgentTeams.getActiveTeamCount()).toBe(0)
     })
@@ -61,7 +61,7 @@ export function registerClaudeAgentTeamsPtyExitLeakTests(): void {
       registerTeam(runtime, 'pty-b', 'handle-b')
       expect(internals(runtime).claudeAgentTeams.getActiveTeamCount()).toBe(2)
 
-      runtime.onPtyExit('pty-a', 0)
+      void runtime.onPtyExit('pty-a', 0)
 
       expect(internals(runtime).claudeAgentTeams.getActiveTeamCount()).toBe(1)
     })
@@ -72,7 +72,7 @@ export function registerClaudeAgentTeamsPtyExitLeakTests(): void {
       handleByPtyId.set('pty-plain', 'handle-plain')
       expect(internals(runtime).claudeAgentTeams.getActiveTeamCount()).toBe(0)
 
-      runtime.onPtyExit('pty-plain', 0)
+      void runtime.onPtyExit('pty-plain', 0)
 
       expect(internals(runtime).claudeAgentTeams.getActiveTeamCount()).toBe(0)
     })

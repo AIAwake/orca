@@ -159,7 +159,7 @@ describe('OrcaRuntimeService', () => {
       write: () => true,
       kill: () => false,
       stopAndWait: async (ptyId) => {
-        runtime.onPtyExit(ptyId, -1)
+        void runtime.onPtyExit(ptyId, -1)
         return true
       },
       getForegroundProcess: async () => null,
@@ -218,7 +218,7 @@ describe('OrcaRuntimeService', () => {
       .mockImplementationOnce(() => initialInventory.promise)
       .mockResolvedValueOnce([])
     const stopAndWait = vi.fn(async (ptyId: string) => {
-      runtime.onPtyExit(ptyId, -1)
+      void runtime.onPtyExit(ptyId, -1)
       return true
     })
     runtime.setPtyController({
@@ -262,7 +262,7 @@ describe('OrcaRuntimeService', () => {
       kill: () => false,
       stopAndWait: async (ptyId) => {
         const result = await stop.promise
-        runtime.onPtyExit(ptyId, -1)
+        void runtime.onPtyExit(ptyId, -1)
         return result
       },
       getForegroundProcess: async () => null,
@@ -374,7 +374,7 @@ describe('OrcaRuntimeService', () => {
       write: () => true,
       kill: () => false,
       stopAndWait: async (ptyId) => {
-        runtime.onPtyExit(ptyId, -1)
+        void runtime.onPtyExit(ptyId, -1)
         return true
       },
       getForegroundProcess: async () => null,
@@ -443,7 +443,7 @@ describe('OrcaRuntimeService', () => {
       write: () => true,
       kill: () => false,
       stopAndWait: async (ptyId) => {
-        runtime.onPtyExit(ptyId, -1)
+        void runtime.onPtyExit(ptyId, -1)
         return true
       },
       getForegroundProcess: async () => null,
@@ -494,11 +494,11 @@ describe('OrcaRuntimeService', () => {
         if (failedAttempts === 1) {
           throw new Error('stop failed')
         }
-        runtime.onPtyExit(ptyId, -1)
+        void runtime.onPtyExit(ptyId, -1)
         return true
       }
       const stopped = await secondStop.promise
-      runtime.onPtyExit(ptyId, -1)
+      void runtime.onPtyExit(ptyId, -1)
       return stopped
     })
     runtime.setPtyController({
@@ -553,7 +553,7 @@ describe('OrcaRuntimeService', () => {
       stopAndWait: async (ptyId, opts) => {
         stopped.push(ptyId)
         expect(opts).toEqual({ keepHistory: true })
-        runtime.onPtyExit(ptyId, -1)
+        void runtime.onPtyExit(ptyId, -1)
         return true
       },
       getForegroundProcess: async () => null,
@@ -604,7 +604,7 @@ describe('OrcaRuntimeService', () => {
       kill: () => false,
       stopAndWait: async (ptyId) => {
         stopped.push(ptyId)
-        runtime.onPtyExit(ptyId, -1)
+        void runtime.onPtyExit(ptyId, -1)
         return true
       },
       getForegroundProcess: async () => null,

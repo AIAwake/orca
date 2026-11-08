@@ -215,7 +215,7 @@ describe('workspace removal runtime dispatch', () => {
   })
 
   it('retains runtime purge dispatch in a recovery job', () => {
-    runtime.recoveryJobHost().purge(record)
+    void runtime.recoveryJobHost().purge(record)
     expect(runtime.purges).toEqual([
       { store, worktreeId: record.worktreeId, repoId: record.repoId, hostId: 'local' }
     ])

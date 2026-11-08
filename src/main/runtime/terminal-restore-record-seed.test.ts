@@ -296,7 +296,7 @@ describe('terminal query dispatch characterization', () => {
         expect(find).toHaveBeenCalledTimes(2)
         expect(pty.runtimeSessionOwned).toBe(true)
       } finally {
-        runtime.onPtyExit('pty-query', 0)
+        void runtime.onPtyExit('pty-query', 0)
       }
     })
 
@@ -513,7 +513,7 @@ describe('terminal query reentry characterization', () => {
       const handle = runtime.ptyHandle('pty-query')
       expect(runtime.getRendererTerminalSerializerGenerationForHandle(handle)).toBe(27)
       expect(runtime.calls).toEqual(['generation:pty-query'])
-      runtime.onPtyExit('pty-query', 0)
+      void runtime.onPtyExit('pty-query', 0)
     })
 
     it('recovers through the current runtime overrides in the original output order', () => {
@@ -531,7 +531,7 @@ describe('terminal query reentry characterization', () => {
         'data:pty-recovery:tail:7'
       ])
       expect(runtime.recoveryState('pty-recovery')).toEqual({ preferred: true, hydration: 'done' })
-      runtime.onPtyExit('pty-recovery', 0)
+      void runtime.onPtyExit('pty-recovery', 0)
     })
 
     it('leaves output ownership untouched when the recovery snapshot is empty', () => {

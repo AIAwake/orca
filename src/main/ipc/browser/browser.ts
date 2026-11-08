@@ -98,7 +98,7 @@ export function registerBrowserHandlers(store: BrowserPasswordsSettingsSource): 
       return false
     }
     if (agentBrowserBridgeRef && previousWcId !== null && previousWcId !== args.webContentsId) {
-      agentBrowserBridgeRef.onProcessSwap(args.browserPageId, args.webContentsId, previousWcId)
+      void agentBrowserBridgeRef.onProcessSwap(args.browserPageId, args.webContentsId, previousWcId)
     }
     resolveTabRegistrationWaiters(args.browserPageId, args.worktreeId)
     announceRegisteredBrowserExtensionTab(args.browserPageId, args.webContentsId)
@@ -180,7 +180,7 @@ export function registerBrowserHandlers(store: BrowserPasswordsSettingsSource): 
     // Destroy bridge sessions before unregistering clears the guest mapping.
     const wcId = browserManager.getGuestWebContentsId(args.browserPageId)
     if (wcId !== null && agentBrowserBridgeRef) {
-      agentBrowserBridgeRef.onTabClosed(wcId)
+      void agentBrowserBridgeRef.onTabClosed(wcId)
     }
     cancelBrowserWebAuthnAccountRequests(args.browserPageId)
     browserManager.unregisterGuest(args.browserPageId)

@@ -11,7 +11,7 @@ describe('per-PTY lifecycle generation retention (leak regression)', () => {
     for (let index = 0; index < 50; index += 1) {
       const ptyId = `pty-${index}`
       runtime.onPtySpawned(ptyId)
-      runtime.onPtyExit(ptyId, 0)
+      void runtime.onPtyExit(ptyId, 0)
     }
     expect(internals.ptyLifecycleGenerationById.size).toBe(0)
   })

@@ -191,7 +191,7 @@ describe('OrcaRuntimeService', () => {
     await expect(refreshInventory(undefined)).resolves.not.toBeNull()
     expect(runtime.verifyOrchestrationCompatibilityCaller(evidence)).not.toBeNull()
 
-    runtime.onPtyExit(ptyId, -1, incarnationId)
+    void runtime.onPtyExit(ptyId, -1, incarnationId)
 
     expect(runtime.verifyOrchestrationCompatibilityCaller(evidence)).toBeNull()
     expect(retireAuthority).not.toHaveBeenCalled()
@@ -291,7 +291,7 @@ describe('OrcaRuntimeService', () => {
     runtime.setPtyController({
       spawn: vi.fn(async () => {
         runtime.beginPtyRegistration('pty-exited-during-start', 'incarnation-exited-during-start')
-        runtime.onPtyExit('pty-exited-during-start', 0, 'incarnation-exited-during-start')
+        void runtime.onPtyExit('pty-exited-during-start', 0, 'incarnation-exited-during-start')
         return {
           id: 'pty-exited-during-start',
           incarnationId: 'incarnation-exited-during-start'

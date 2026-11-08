@@ -24,7 +24,7 @@ describe('OrcaRuntimeService', () => {
     const { handle } = await runtime.createTerminal(`path:${TEST_WORKTREE_PATH}`)
 
     const waiting = runtime.waitForTerminal(handle, { condition: 'exit', timeoutMs: 1000 })
-    runtime.onPtyExit('pty-bg', 7)
+    void runtime.onPtyExit('pty-bg', 7)
 
     await expect(waiting).resolves.toMatchObject({
       handle,
@@ -99,7 +99,7 @@ describe('OrcaRuntimeService', () => {
     const { handle } = await runtime.createTerminal(`path:${TEST_WORKTREE_PATH}`)
 
     const waiting = runtime.waitForSetupTerminalCompletion(handle)
-    runtime.onPtyExit('pty-legacy-setup', 9)
+    void runtime.onPtyExit('pty-legacy-setup', 9)
 
     await expect(waiting).resolves.toEqual({ exitCode: 9 })
   })
@@ -186,7 +186,7 @@ describe('OrcaRuntimeService', () => {
       tail: expect.arrayContaining(['line-0'])
     })
 
-    runtime.onPtyExit('pty-bg', 0)
+    void runtime.onPtyExit('pty-bg', 0)
 
     const pty = (
       runtime as unknown as {
@@ -230,7 +230,7 @@ describe('OrcaRuntimeService', () => {
       const { handle } = await runtime.createTerminal(`path:${TEST_WORKTREE_PATH}`)
       handles.push(handle)
       runtime.onPtyData(`pty-bg-${index}`, `wrote /tmp/result-${index}.json\n`, 100 + index)
-      runtime.onPtyExit(`pty-bg-${index}`, 0)
+      void runtime.onPtyExit(`pty-bg-${index}`, 0)
     }
 
     const internals = runtime as unknown as {

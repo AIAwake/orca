@@ -48,7 +48,7 @@ describe('accepted spawn followed by failed startup readiness', () => {
           }
         })
       if (exitBeforeWait) {
-        exit()
+        void exit()
       }
       const result = waitForWorkerAgentReady(runtime, handle, {
         agent,
@@ -57,7 +57,7 @@ describe('accepted spawn followed by failed startup readiness', () => {
         timeoutMs: 50
       }).catch((error: unknown) => error)
       if (!exitBeforeWait) {
-        exit()
+        void exit()
       }
       await vi.advanceTimersByTimeAsync(100)
       expect(await result).toMatchObject({
@@ -87,7 +87,7 @@ describe('accepted spawn followed by failed startup readiness', () => {
               ...(context === 'adopted' ? { agentSessionDisposition: 'adopted' as const } : {}),
               ...(context === 'wrong-incarnation' ? { incarnationId: 'replacement' } : {})
             }
-      runtime.onPtyExit(TRANSCRIPT_PANE_PTY_ID, 256, 'inc-1', {
+      void runtime.onPtyExit(TRANSCRIPT_PANE_PTY_ID, 256, 'inc-1', {
         providerExitObserved: true,
         cause: {
           kind: 'exited',

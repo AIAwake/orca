@@ -109,7 +109,7 @@ describe('OrcaRuntimeService', () => {
     runtime.attachWindow(1)
     runtime.syncWindowGraph(1, { tabs: [], leaves: [] })
     const stopAndWait = vi.fn(async (ptyId: string) => {
-      runtime.onPtyExit(ptyId, 0)
+      void runtime.onPtyExit(ptyId, 0)
       return true
     })
     runtime.setPtyController({
@@ -623,7 +623,7 @@ describe('OrcaRuntimeService', () => {
         expect(opts).toEqual(
           expect.objectContaining({ keepHistory: true, deadlineMs: expect.any(Number) })
         )
-        runtime.onPtyExit(ptyId, -1)
+        void runtime.onPtyExit(ptyId, -1)
         return true
       },
       getForegroundProcess: async () => null,
@@ -642,7 +642,7 @@ describe('OrcaRuntimeService', () => {
   it('uses provider-owned worktree identity when a PTY cwd has drifted', async () => {
     const runtime = new OrcaRuntimeService(store)
     const stopAndWait = vi.fn(async (ptyId: string) => {
-      runtime.onPtyExit(ptyId, -1)
+      void runtime.onPtyExit(ptyId, -1)
       return true
     })
     const processLists = [
@@ -699,7 +699,7 @@ describe('OrcaRuntimeService', () => {
       []
     ]
     const stopAndWait = vi.fn(async (ptyId: string) => {
-      runtime.onPtyExit(ptyId, -1)
+      void runtime.onPtyExit(ptyId, -1)
       return true
     })
     runtime.setPtyController({
@@ -742,7 +742,7 @@ describe('OrcaRuntimeService', () => {
       []
     ]
     const stopAndWait = vi.fn(async (ptyId: string) => {
-      runtime.onPtyExit(ptyId, -1)
+      void runtime.onPtyExit(ptyId, -1)
       return true
     })
     runtime.setPtyController({
@@ -840,7 +840,7 @@ describe('OrcaRuntimeService', () => {
       kill: () => false,
       stopAndWait: async (ptyId) => {
         stopped.push(ptyId)
-        runtime.onPtyExit(ptyId, -1)
+        void runtime.onPtyExit(ptyId, -1)
         return true
       },
       getForegroundProcess: async () => null,

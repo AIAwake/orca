@@ -70,7 +70,7 @@ describe('terminal.recoverPane liveness gate', () => {
       leafId: HEADLESS_LEAF_ID
     })
     const handle = runtime.resolveTerminalPane(paneKey, TEST_WORKTREE_ID).handle
-    runtime.onPtyExit(ptyId, -1)
+    void runtime.onPtyExit(ptyId, -1)
     runtime.markPtyLivenessLive(ptyId)
     const createTerminal = vi.spyOn(runtime, 'createTerminal')
 
@@ -91,7 +91,7 @@ describe('terminal.recoverPane liveness gate', () => {
       leafId: HEADLESS_LEAF_ID
     })
     const handle = runtime.resolveTerminalPane(paneKey, TEST_WORKTREE_ID).handle
-    runtime.onPtyExit(ptyId, -1)
+    void runtime.onPtyExit(ptyId, -1)
     expect(runtime.getPtyLivenessVerdict(ptyId)?.status).toBe('unverifiable')
     const createTerminal = vi.spyOn(runtime, 'createTerminal')
 
@@ -113,7 +113,7 @@ describe('terminal.recoverPane liveness gate', () => {
       leafId: HEADLESS_LEAF_ID
     })
     const handle = runtime.resolveTerminalPane(paneKey, TEST_WORKTREE_ID).handle
-    runtime.onPtyExit(ptyId, -1, undefined, { hostExitConfirmed: true })
+    void runtime.onPtyExit(ptyId, -1, undefined, { hostExitConfirmed: true })
     expect(runtime.getPtyLivenessVerdict(ptyId)?.status).toBe('exited')
     const createTerminal = vi.spyOn(runtime, 'createTerminal').mockResolvedValue({
       handle: 'term-replacement',
@@ -219,7 +219,7 @@ describe('terminal pane recovery uses the current Root state', () => {
   it('shares a rejected recovery and removes it before a later retry', async () => {
     const tabId = 'tab-rejected-recovery'
     const { runtime, paneKey, ptyId, handle, recoveryKey } = createRecoveryPane(tabId)
-    runtime.onPtyExit(ptyId, -1, undefined, { hostExitConfirmed: true })
+    void runtime.onPtyExit(ptyId, -1, undefined, { hostExitConfirmed: true })
     const creation = deferred<RuntimeTerminalCreate>()
     const create = vi
       .spyOn(runtime, 'createTerminal')
@@ -247,7 +247,7 @@ describe('terminal pane recovery uses the current Root state', () => {
   it('keeps a newer pending entry when an earlier recovery settles', async () => {
     const tabId = 'tab-newer-recovery'
     const { runtime, paneKey, ptyId, handle, recoveryKey } = createRecoveryPane(tabId)
-    runtime.onPtyExit(ptyId, -1, undefined, { hostExitConfirmed: true })
+    void runtime.onPtyExit(ptyId, -1, undefined, { hostExitConfirmed: true })
     const creation = deferred<RuntimeTerminalCreate>()
     const create = vi.spyOn(runtime, 'createTerminal').mockImplementation(function (
       this: PaneRecoveryRuntime,
