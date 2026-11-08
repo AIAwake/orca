@@ -13,7 +13,6 @@ import { structuredLaunchSeedOptions } from '../../../shared/native-chat/input/n
 import { toRuntimeWorktreeSelector } from '@/runtime/runtime-worktree-selector'
 import { useAppStore } from '@/store'
 import {
-  clearWebSessionFocusIntentIfMatches,
   recordWebSessionFocusIntent,
   resolveWebSessionVisibleTabId
 } from '@/runtime/web-session-focus-intent'
@@ -244,15 +243,7 @@ export function restoreStructuredAgentSessionLaunchIntent(args: {
   }
 }
 
-export function abandonStructuredAgentSessionLaunchIntent(
-  intent: StructuredAgentSessionLaunchIntent
-): void {
-  clearWebSessionFocusIntentIfMatches(
-    structuredAgentSessionFocusOwner(intent.target),
-    intent.worktreeId,
-    `agent-session:${intent.sessionId}`
-  )
-}
+export { abandonStructuredAgentSessionLaunchIntent } from './agent-session/launch/structured-agent-session-launch-abandon'
 
 export {
   launchStructuredAgentSession,

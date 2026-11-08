@@ -28,9 +28,7 @@ import {
   selectFolderWorkspaces,
   selectWorktreesByRepo
 } from '@/store/workspaces/catalog/workspace-record-fields'
-import { findWorkspaceShowingDoc } from './file-preview-page-conversion'
-
-export { convertBrowserPageToWorkspaceDoc } from './file-preview-page-conversion'
+import { findWorkspaceShowingDoc } from './workspace-doc-tab-lookup'
 
 export type PreviewableLanguage = 'html'
 
