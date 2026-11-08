@@ -219,7 +219,7 @@ describe('orchestration worker-start prompt contract', () => {
     async (agent) => {
       vi.useFakeTimers()
       const harness = await createPromptContractHarness('accepted', agent)
-      harness.runtime.onPtyExit('pty-prompt', 137, undefined, { providerExitObserved: true })
+      void harness.runtime.onPtyExit('pty-prompt', 137, undefined, { providerExitObserved: true })
       const send = vi.spyOn(harness.runtime, 'sendTerminalAgentPrompt')
       const receipt = vi.fn()
       void harness.dispatcher.dispatch(harness.request).then(receipt)

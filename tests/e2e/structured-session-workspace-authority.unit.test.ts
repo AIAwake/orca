@@ -503,7 +503,7 @@ it.each([false, true])(
                 finishInstall()
               })
               .toThrow()
-            runtime.removeWorktreeMetadataAndHistory(input.profile, workspace, 'local')
+            void runtime.removeWorktreeMetadataAndHistory(input.profile, workspace, 'local')
           }
         },
         {

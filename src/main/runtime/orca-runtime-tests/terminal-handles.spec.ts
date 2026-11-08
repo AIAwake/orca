@@ -94,7 +94,7 @@ describe('OrcaRuntimeService', () => {
       write: () => true,
       kill: () => false,
       stopAndWait: async (ptyId) => {
-        runtime.onPtyExit(ptyId, -1)
+        void runtime.onPtyExit(ptyId, -1)
         return true
       },
       getForegroundProcess: async () => null,
@@ -636,7 +636,7 @@ describe('OrcaRuntimeService', () => {
       leafId: HEADLESS_LEAF_ID
     })
     const handle = runtime.resolveTerminalPane(paneKey, TEST_WORKTREE_ID).handle
-    runtime.onPtyExit(ptyId, -1)
+    void runtime.onPtyExit(ptyId, -1)
     expect(runtime.getPtyLivenessVerdict(ptyId)?.status).toBe('unverifiable')
     // Stub create so a regression records a duplicate spawn rather than an unrelated fixture error.
     const createTerminal = vi.spyOn(runtime, 'createTerminal').mockResolvedValue({
@@ -665,7 +665,7 @@ describe('OrcaRuntimeService', () => {
       leafId: HEADLESS_LEAF_ID
     })
     const handle = runtime.resolveTerminalPane(paneKey, TEST_WORKTREE_ID).handle
-    runtime.onPtyExit(ptyId, -1, undefined, { hostExitConfirmed: true })
+    void runtime.onPtyExit(ptyId, -1, undefined, { hostExitConfirmed: true })
     const createTerminal = vi.spyOn(runtime, 'createTerminal').mockResolvedValue({
       handle: 'term-replacement',
       tabId,

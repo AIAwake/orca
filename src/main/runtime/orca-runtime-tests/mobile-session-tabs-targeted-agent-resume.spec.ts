@@ -276,7 +276,7 @@ describe('resumeAgentSessionInWorkspace', () => {
       if (!proved) {
         await expect(resume(action)).resolves.toEqual({ ok: false, reason: 'held_elsewhere' })
         expect(spawn).toHaveBeenCalledOnce()
-        runtime.onPtyExit('result-pty', 0)
+        void runtime.onPtyExit('result-pty', 0)
       }
       await expect(resume(action)).resolves.toMatchObject({ ok: true, ptyId: 'next-C' })
       expect(spawn).toHaveBeenCalledTimes(2)
@@ -578,7 +578,7 @@ describe('resumeAgentSessionInWorkspace', () => {
       reason: 'held_elsewhere'
     })
 
-    runtime.onPtyExit('retried-pty', 0)
+    void runtime.onPtyExit('retried-pty', 0)
 
     await expect(resume({ mutationId: 'next' })).resolves.toMatchObject({ ok: true })
   })
@@ -730,7 +730,7 @@ describe('resumeAgentSessionInWorkspace retries, cancellation and a failed publi
     })
     await expect(resume()).resolves.toEqual({ ok: false, reason: 'create_failed' })
     unsubscribe()
-    runtime.onPtyExit('resumed-pty', 0)
+    void runtime.onPtyExit('resumed-pty', 0)
     await expect(resume({ mutationId: 'next-delivery' })).resolves.toMatchObject({ ok: true })
   })
 })
@@ -743,7 +743,7 @@ describe('resumeAgentSessionInWorkspace claim lifetime', () => {
         if (first) {
           first = false
           runtime.beginPtyRegistration('resumed-pty')
-          runtime.onPtyExit('resumed-pty', 0)
+          void runtime.onPtyExit('resumed-pty', 0)
         }
         return { id: 'resumed-pty' }
       }
@@ -795,7 +795,7 @@ describe('resumeAgentSessionInWorkspace claim lifetime', () => {
     if (!other.ptyId) {
       throw new Error('missing other PTY')
     }
-    runtime.onPtyExit(other.ptyId, 0)
+    void runtime.onPtyExit(other.ptyId, 0)
     await expect(resume({ mutationId: 'other-delivery' })).resolves.toEqual({
       ok: false,
       reason: 'held_elsewhere'
@@ -821,7 +821,7 @@ describe('resumeAgentSessionInWorkspace claim lifetime', () => {
           if (!other.ptyId) {
             throw new Error('missing shell PTY')
           }
-          runtime.onPtyExit(other.ptyId, 0)
+          void runtime.onPtyExit(other.ptyId, 0)
         }
         return []
       },

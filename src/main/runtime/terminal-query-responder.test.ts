@@ -435,7 +435,7 @@ describe('stale writeChain links after dispose', () => {
 
     // Queue a forward-flagged chain link, then dispose before it runs.
     runtime.onPtyData('pty-stale', DA1, Date.now())
-    runtime.onPtyExit('pty-stale', 0)
+    void runtime.onPtyExit('pty-stale', 0)
     await new Promise((resolve) => setTimeout(resolve, 0))
 
     expect(replies).toEqual([])
@@ -448,7 +448,7 @@ describe('stale writeChain links after dispose', () => {
     // Daemon respawns reuse session ids: dispose with the flagged link still
     // queued, then re-create the same id before the link runs.
     runtime.onPtyData('pty-reuse', DA1, Date.now())
-    runtime.onPtyExit('pty-reuse', 0)
+    void runtime.onPtyExit('pty-reuse', 0)
     runtime.onPtyData('pty-reuse', 'fresh shell banner', Date.now())
     await settle(runtime, 'pty-reuse')
 

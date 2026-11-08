@@ -32,7 +32,7 @@ describe('closeEarlierHookReviewRunTerminals', () => {
     const prior = makeRun('prior', 1)
     prior.terminalPtyId = TRANSCRIPT_PANE_PTY_ID
     const latest = makeRun('latest', 2)
-    runtime.onPtyExit(TRANSCRIPT_PANE_PTY_ID, 137, 'inc-1', { providerExitObserved: true })
+    void runtime.onPtyExit(TRANSCRIPT_PANE_PTY_ID, 137, 'inc-1', { providerExitObserved: true })
     const closeTerminal = vi.fn()
     const markDispatchResult = vi.fn()
     await closeEarlierHookReviewRunTerminals(

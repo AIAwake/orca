@@ -160,7 +160,7 @@ it.each([
         expect(h.fleet.joinResolvedWorktreeScans).not.toHaveBeenCalled()
         runs.push(h.work())
       } finally {
-        h.catalog.stop()
+        void h.catalog.stop()
       }
     }
     expect(runs[1]).toEqual(runs[0])
@@ -178,6 +178,6 @@ it('names no workspace for a path two hosts share, without walking worktrees', a
     expect(h.requests.at(-1)?.workspacePath).toBeNull()
     expect(h.fleet.matchWorktreeSelector).not.toHaveBeenCalled()
   } finally {
-    h.catalog.stop()
+    void h.catalog.stop()
   }
 })

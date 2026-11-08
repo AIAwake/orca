@@ -372,7 +372,7 @@ async function runSchedule(seed: number, stats: Stats): Promise<void> {
   }
   stats.ptyBytes += ptyWrites.join('').length
   stats.schedules += 1
-  transport.destroy?.()
+  void transport.destroy?.()
   link.dispose()
   vi.unstubAllGlobals()
   resetRemoteRuntimeTerminalMultiplexersForTests()
@@ -482,7 +482,7 @@ describe('remote terminal input delivery model', () => {
     await vi.advanceTimersByTimeAsync(20_000)
     expect(onWriteUnavailable).toHaveBeenCalledTimes(1)
     expect(ptyWrites).toEqual(['ls\r'])
-    transport.destroy?.()
+    void transport.destroy?.()
     link.dispose()
   })
 })

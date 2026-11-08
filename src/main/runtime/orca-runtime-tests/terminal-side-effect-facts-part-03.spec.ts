@@ -156,7 +156,7 @@ describe('terminal output runtime re-entry', () => {
       expect(titles).toEqual(['Codex working'])
     } finally {
       runtime['applyTrackedPtyTitle'] = original
-      runtime.onPtyExit(ptyId, 0)
+      void runtime.onPtyExit(ptyId, 0)
     }
   })
 

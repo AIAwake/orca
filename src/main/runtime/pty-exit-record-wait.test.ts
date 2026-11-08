@@ -13,7 +13,7 @@ describe('waitForPtyExitRecord', () => {
     const runtime = new OrcaRuntimeService()
     runtime.registerPty(PTY_ID, WORKTREE_ID, null)
     const wait = runtime.waitForPtyExitRecord(PTY_ID, 10_000)
-    runtime.onPtyExit(PTY_ID, 0)
+    void runtime.onPtyExit(PTY_ID, 0)
     await expect(wait).resolves.toBe(true)
     expect(runtime.getPtyLivenessVerdict(PTY_ID)).toEqual({
       status: 'exited',
@@ -29,6 +29,6 @@ describe('waitForPtyExitRecord', () => {
     const wait = runtime.waitForPtyExitRecord(PTY_ID, 1_000)
     await vi.advanceTimersByTimeAsync(1_000)
     await expect(wait).resolves.toBe(false)
-    runtime.onPtyExit(PTY_ID, 0)
+    void runtime.onPtyExit(PTY_ID, 0)
   })
 })

@@ -91,7 +91,7 @@ describe('runtime workspace activity facts', () => {
       [FOLDER]: { terminal: null, browser: false, structuredChat: true, agent: null }
     })
 
-    runtime.onPtyExit('pty-1', 0)
+    void runtime.onPtyExit('pty-1', 0)
     expect(runtime.getWorkspaceActivityFacts().facts[WT]?.terminal).toBeNull()
 
     runtime.syncWindowGraph(1, {

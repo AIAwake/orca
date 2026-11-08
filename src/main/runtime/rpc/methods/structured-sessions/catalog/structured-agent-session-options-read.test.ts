@@ -157,7 +157,7 @@ describe('agentSession.modelCatalog', () => {
       })
       expect(listed).toHaveBeenCalledTimes(1)
     } finally {
-      catalog.stop()
+      void catalog.stop()
     }
   })
 
@@ -332,7 +332,7 @@ describe('agentSession.modelCatalog', () => {
       expect(await open(true)).toMatchObject({ ok: true, result: { models: [{ id: 'b-model' }] } })
     } finally {
       late.resolve(listed('a-model'))
-      catalog.stop()
+      void catalog.stop()
     }
   })
 
@@ -432,7 +432,7 @@ describe('agentSession.modelCatalog', () => {
       expect(resolve).toHaveBeenCalledTimes(calls)
       expect(run).not.toHaveBeenCalled()
     } finally {
-      catalog.stop()
+      void catalog.stop()
     }
   })
 })

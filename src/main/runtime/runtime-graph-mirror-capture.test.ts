@@ -77,7 +77,7 @@ describe("today's graph mirror", () => {
     runtime.registerPty('pty-b', WORKTREE_ID, null, { tabId: 'tab-1', leafId: LEAF_2 })
     runtime.onPtyData('pty-a', PTY_A_OUTPUT, 1000)
     runtime.onPtyData('pty-b', 'done\r\n', 2000)
-    runtime.onPtyExit('pty-b', 1)
+    void runtime.onPtyExit('pty-b', 1)
     runtime.syncWindowGraph(1, { tabs: MIRROR_TABS, leaves: PUBLISHED_LEAVES })
 
     expect([...mirror().tabs.values()]).toEqual(MIRROR_TABS)

@@ -166,7 +166,7 @@ describe('OrcaRuntimeRpcServer', () => {
         timeoutMs: 1000
       }
     })
-    runtime.onPtyExit('pty-1', 9)
+    void runtime.onPtyExit('pty-1', 9)
     const waitResponse = await waitPromise
     expect(waitResponse).toMatchObject({
       id: 'req_wait',

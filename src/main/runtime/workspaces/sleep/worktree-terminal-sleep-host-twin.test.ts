@@ -46,7 +46,7 @@ async function sleepLocalCopy(runtimeStore: typeof store = store, twinLive = fal
     twin
   ]
   const stopAndWait = vi.fn(async (ptyId: string) => {
-    runtime.onPtyExit(ptyId, -1)
+    void runtime.onPtyExit(ptyId, -1)
     return true
   })
   runtime.setPtyController({

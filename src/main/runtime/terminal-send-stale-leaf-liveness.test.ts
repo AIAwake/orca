@@ -509,7 +509,7 @@ describe('push-on-idle orchestration delivery absence gate', () => {
     expect(write).not.toHaveBeenCalled()
 
     // The session dies and cold-restores under the same id while the probe is out.
-    runtime.onPtyExit(STALE_PTY_ID, 0)
+    void runtime.onPtyExit(STALE_PTY_ID, 0)
     runtime.onPtySpawned(STALE_PTY_ID, undefined, { awaitsRegistration: false })
 
     resolveProbe(null)
@@ -755,7 +755,7 @@ describe('push-on-idle orchestration delivery absence gate', () => {
       runtime.deliverPendingMessagesForHandle(handle)
       expect(write).toHaveBeenCalledTimes(1)
 
-      runtime.onPtyExit(STALE_PTY_ID, 0)
+      void runtime.onPtyExit(STALE_PTY_ID, 0)
       runtime.onPtySpawned(STALE_PTY_ID)
 
       await vi.advanceTimersByTimeAsync(500)
@@ -799,7 +799,7 @@ describe('push-on-idle orchestration delivery absence gate', () => {
       runtime.deliverPendingMessagesForHandle(handle)
       await Promise.resolve()
 
-      runtime.onPtyExit(STALE_PTY_ID, 0)
+      void runtime.onPtyExit(STALE_PTY_ID, 0)
 
       await vi.advanceTimersByTimeAsync(500)
       expect(write.mock.calls.filter(([, data]) => data === '\r')).toHaveLength(0)
@@ -828,7 +828,7 @@ describe('push-on-idle orchestration delivery absence gate', () => {
 
       // Replace the leaf object the armed callback closed over, then exit.
       publishLeafGraph(runtime, STALE_PTY_ID)
-      runtime.onPtyExit(STALE_PTY_ID, 0)
+      void runtime.onPtyExit(STALE_PTY_ID, 0)
 
       await vi.advanceTimersByTimeAsync(500)
       expect(write.mock.calls.filter(([, data]) => data === '\r')).toHaveLength(0)

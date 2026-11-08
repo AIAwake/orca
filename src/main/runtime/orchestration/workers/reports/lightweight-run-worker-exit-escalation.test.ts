@@ -135,7 +135,7 @@ async function gradeWorkerExit(
     const dispatch = createRootDispatch(db, task.id, workerHandle, WORKER_PANE_KEY)
     runtime.setOrchestrationDb(db as never)
 
-    runtime.onPtyExit(WORKER_PTY_ID, 137)
+    void runtime.onPtyExit(WORKER_PTY_ID, 137)
     await settle()
 
     const direct = db.getUnreadMessages(coordinatorHandle, ['escalation'])
@@ -198,7 +198,7 @@ describe('STA-4604 worker PTY exit escalation reaches the coordinator', () => {
         }
         runtime.setOrchestrationDb(db)
 
-        runtime.onPtyExit(WORKER_PTY_ID, 137)
+        void runtime.onPtyExit(WORKER_PTY_ID, 137)
         await settle()
 
         const messages = db.db.prepare("SELECT * FROM messages WHERE type = 'escalation'").all()
@@ -259,7 +259,7 @@ describe('STA-4604 worker PTY exit escalation reaches the coordinator', () => {
         typeFilter: ['escalation'],
         timeoutMs: 2_000
       })
-      runtime.onPtyExit(WORKER_PTY_ID, 137)
+      void runtime.onPtyExit(WORKER_PTY_ID, 137)
 
       await expect(waiting).resolves.toBeInstanceOf(MessageWake)
       // A notification can wake waitForMessage without durable mail; assert the stored message too.
@@ -296,7 +296,7 @@ describe('STA-4604 worker PTY exit escalation reaches the coordinator', () => {
       createRootDispatch(db, task.id, workerHandle, WORKER_PANE_KEY)
       runtime.setOrchestrationDb(db as never)
 
-      runtime.onPtyExit(WORKER_PTY_ID, 137)
+      void runtime.onPtyExit(WORKER_PTY_ID, 137)
       await settle()
 
       expect({
@@ -336,7 +336,7 @@ describe('STA-4604 worker PTY exit escalation reaches the coordinator', () => {
       db.markWorkerDispatchReady(started.dispatch.id)
       runtime.setOrchestrationDb(db as never)
 
-      runtime.onPtyExit(WORKER_PTY_ID, 137)
+      void runtime.onPtyExit(WORKER_PTY_ID, 137)
       await settle()
 
       expect({
@@ -372,7 +372,7 @@ describe('STA-4604 worker PTY exit escalation reaches the coordinator', () => {
       const dispatch = createRootDispatch(db, task.id, workerHandle, WORKER_PANE_KEY)
       runtime.setOrchestrationDb(db as never)
 
-      runtime.onPtyExit(WORKER_PTY_ID, 137)
+      void runtime.onPtyExit(WORKER_PTY_ID, 137)
       await settle()
 
       const escalations = db.getUnreadRunMailbox(run.id, 100, ['escalation'])
@@ -412,7 +412,7 @@ describe('STA-4604 worker PTY exit escalation reaches the coordinator', () => {
       expect(db.getRun(run.id)?.coordinator_handle).toBeNull()
       runtime.setOrchestrationDb(db as never)
 
-      runtime.onPtyExit(WORKER_PTY_ID, 137)
+      void runtime.onPtyExit(WORKER_PTY_ID, 137)
       await settle()
 
       // Without a current coordinator handle, the durable Run mailbox preserves escalation for the next binding.
