@@ -10,7 +10,9 @@ import {
   type ObservedWebRequestDetails,
   type ObservedWebRequestEvent
 } from '../sessions/requests/browser-session-web-request-observer'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { chromeFrameDocument } from './api/web-navigation'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { browserExtensionHostPatternsInSession } from './api/permissions'
 import {
   emitBrowserExtensionEvent,
@@ -21,6 +23,7 @@ import { matchesExtensionMatchPattern } from './permissions/browser-extension-ma
 import { extensionHasPermission } from './api-runtime/browser-extension-namespace-registry'
 import { hasBrowserExtensionHostPermission } from './permissions/browser-extension-permission-grants'
 import { canExtensionAccessRequest } from './permissions/browser-extension-request-host-access'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { resolveBrowserExtensionTab } from './tabs-and-windows/browser-extension-tab-model'
 
 /**

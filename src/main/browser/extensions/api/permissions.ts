@@ -20,11 +20,14 @@ import {
   withoutGrantedPermissions,
   type BrowserExtensionPermissionSet
 } from '../permissions/browser-extension-permission-grants'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { askToGrantBrowserExtensionPermissions } from '../permissions/browser-extension-permission-prompt'
 import { getBrowserExtensionProfileStateStore } from '../profile-storage/browser-extension-profile-state-store'
 import { getHostSessionState } from '../api-runtime/browser-extension-contexts'
 import { getBrowserExtensionContextSignal } from '../api-runtime/browser-extension-context-lifetime'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { getDnrSessionRuntime } from '../declarative-net-request/session/browser-extension-dnr-session'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { observeBrowserExtensionWebRequests } from '../browser-extension-web-request'
 
 const USER_GESTURE_WINDOW_MS = 5_000

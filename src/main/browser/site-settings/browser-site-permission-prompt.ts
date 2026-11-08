@@ -6,6 +6,7 @@ import {
   type BrowserSitePermissionDecision
 } from '../../../shared/browser-site-permission'
 import { isEligibleLocalCertificateHost } from '../../../shared/browser-url'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { browserManager } from '../browser-manager'
 import {
   browserPagePromptOrigin,

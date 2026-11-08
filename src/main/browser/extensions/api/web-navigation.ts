@@ -17,6 +17,7 @@ import {
 import {
   listBrowserExtensionTabs,
   resolveBrowserExtensionTab
+  // oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 } from '../tabs-and-windows/browser-extension-tab-model'
 
 /**

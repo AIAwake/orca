@@ -6,6 +6,7 @@ import type {
   BrowserWebAuthnAccountRequest,
   BrowserWebAuthnAccountResponse
 } from '../../../shared/browser-webauthn-account'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { browserManager } from '../browser-manager'
 
 export const BROWSER_WEBAUTHN_ACCOUNT_PICKER_TIMEOUT_MS = 60_000

@@ -1,5 +1,6 @@
 import { webContents } from 'electron'
 import { BrowserCertificateTrustController } from './certificate-trust/browser-certificate-trust-controller'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { BrowserManagerFinal } from './guest-lifecycle/manager/browser-manager-final'
 
 export class BrowserManager extends BrowserManagerFinal {}

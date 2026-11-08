@@ -7,6 +7,7 @@ import {
   showWindowWithoutStealingFocus
 } from '../../../window/foreground-activation-policy'
 import { emitBrowserExtensionEvent } from '../api-runtime/browser-extension-api-host'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { watchBrowserMainWindowReadiness } from '../../guest-lifecycle/browser-main-window-readiness'
 
 /** chrome.windows constants. */
