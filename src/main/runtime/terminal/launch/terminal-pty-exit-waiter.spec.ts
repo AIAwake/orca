@@ -32,7 +32,7 @@ export function registerTerminalPtyExitWaiterTests(): void {
               cause
             })
           if (exitBeforeWait) {
-            exit()
+            void exit()
           }
           const waits = [
             runtime.waitForTerminal(handle, { condition: 'tui-idle', timeoutMs: 100 }),
@@ -44,10 +44,10 @@ export function registerTerminalPtyExitWaiterTests(): void {
           ]
           const outcomes = Promise.all(waits.map((wait) => wait.catch((error: unknown) => error)))
           if (!exitBeforeWait) {
-            exit()
+            void exit()
           }
           const settled = vi.fn()
-          outcomes.then(settled)
+          void outcomes.then(settled)
           await vi.advanceTimersByTimeAsync(0)
           expect(settled).toHaveBeenCalledOnce()
           for (const error of await outcomes) {
@@ -90,20 +90,24 @@ export function registerTerminalPtyExitWaiterTests(): void {
           })
           const outcome = pending.catch((error: unknown) => error)
           const settled = vi.fn()
-          outcome.then(settled)
+          void outcome.then(settled)
           expect(runtime['terminalWaiters'].forPty(TRANSCRIPT_PANE_PTY_ID)).toHaveLength(1)
           expect(subscribe).toHaveBeenCalledOnce()
           const deadline =
             deadlines.mock.results[deadlines.mock.calls.findIndex(([, ms]) => ms === 60_000)].value
           if (end === 'exit') {
-            runtime.onPtyExit(TRANSCRIPT_PANE_PTY_ID, 137, 'inc-1', { providerExitObserved: true })
+            void runtime.onPtyExit(TRANSCRIPT_PANE_PTY_ID, 137, 'inc-1', {
+              providerExitObserved: true
+            })
           } else if (end === 'replacement') {
             runtime.onPtySpawned(TRANSCRIPT_PANE_PTY_ID, 'inc-2')
             runtime['recordPtyWorktree'](TRANSCRIPT_PANE_PTY_ID, 'wt-1', {
               connected: true,
               incarnationId: 'inc-2'
             })
-            runtime.onPtyExit(TRANSCRIPT_PANE_PTY_ID, 137, 'inc-1', { providerExitObserved: true })
+            void runtime.onPtyExit(TRANSCRIPT_PANE_PTY_ID, 137, 'inc-1', {
+              providerExitObserved: true
+            })
           } else if (end === 'prune') {
             runtime['dropDisconnectedPtyRecord'](TRANSCRIPT_PANE_PTY_ID)
           } else if (end === 'graph-retirement') {
@@ -166,12 +170,14 @@ export function registerTerminalPtyExitWaiterTests(): void {
             expect(probe).toHaveBeenCalled()
           }
           if (end !== 'replacement') {
-            runtime.onPtyExit(TRANSCRIPT_PANE_PTY_ID, 137, 'inc-1', { providerExitObserved: true })
+            void runtime.onPtyExit(TRANSCRIPT_PANE_PTY_ID, 137, 'inc-1', {
+              providerExitObserved: true
+            })
           } else {
             runtime.onPtySpawned(TRANSCRIPT_PANE_PTY_ID, 'inc-2')
           }
           const settled = vi.fn()
-          outcome.then(settled)
+          void outcome.then(settled)
           await vi.advanceTimersByTimeAsync(0)
           expect(settled).toHaveBeenCalledOnce()
           expect(await outcome).toMatchObject({
@@ -210,9 +216,11 @@ export function registerTerminalPtyExitWaiterTests(): void {
             freshLaunch: true,
             text: 'do the task'
           })
-          runtime.onPtyExit(TRANSCRIPT_PANE_PTY_ID, 137, 'inc-1', { providerExitObserved: true })
+          void runtime.onPtyExit(TRANSCRIPT_PANE_PTY_ID, 137, 'inc-1', {
+            providerExitObserved: true
+          })
           const settled = vi.fn()
-          delivered.then(settled)
+          void delivered.then(settled)
           await vi.advanceTimersByTimeAsync(0)
           expect(settled).toHaveBeenCalledExactlyOnceWith(false)
           expect(send).not.toHaveBeenCalled()

@@ -313,7 +313,7 @@ describe('OrcaRuntimeService', () => {
 
       runtime.onPtyData(ptyId, '\x1b]0;Codex working\x07', 100)
       runtime.onPtyData(ptyId, 'output without a title\r\n', 101)
-      runtime.onPtyExit(ptyId, 0)
+      void runtime.onPtyExit(ptyId, 0)
 
       await vi.advanceTimersByTimeAsync(4_000)
 

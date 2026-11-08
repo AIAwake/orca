@@ -22,7 +22,7 @@ vi.mock(
 )
 afterEach(async () => {
   const remaining = await releaseAgentSessionRecordStore()
-  remaining?.journalDatabase.close()
+  await remaining?.journalDatabase.close()
   vi.restoreAllMocks()
   vi.unstubAllEnvs()
 })

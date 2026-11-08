@@ -263,7 +263,7 @@ it.each(['success', 'budget'] as const)(
       }
     } finally {
       cleanup?.()
-      service.stop()
+      void service.stop()
       await vi.advanceTimersByTimeAsync(0)
       vi.useRealTimers()
     }

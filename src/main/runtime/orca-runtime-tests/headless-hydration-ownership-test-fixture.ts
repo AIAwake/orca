@@ -66,7 +66,7 @@ export function createHydrationRuntime(
 }
 
 export function retire(runtime: HydrationRuntime): void {
-  runtime.onPtyExit(PTY_ID, 0, undefined, { providerExitObserved: true })
+  void runtime.onPtyExit(PTY_ID, 0, undefined, { providerExitObserved: true })
 }
 
 export const EMPTY_RETAINED_STATE = {

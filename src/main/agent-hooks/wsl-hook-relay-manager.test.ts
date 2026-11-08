@@ -326,7 +326,7 @@ describe('WslHookRelayManager', () => {
   it('leaves the overlay dir null when the guest bundle lacks the installPlugins handler', async () => {
     const waitForSentinel = vi.fn(async () => guestTransport({ registerInstallPlugins: false }))
     const { manager, deps } = createManager({ waitForSentinel })
-    manager.ensureForDistro('Ubuntu')
+    void manager.ensureForDistro('Ubuntu')
     await vi.waitFor(() => expect(deps.installHooks).toHaveBeenCalledTimes(1))
     await new Promise((resolve) => setTimeout(resolve, 20))
     expect(manager.getOpenCodeOverlayDir('Ubuntu')).toBeNull()
@@ -360,7 +360,7 @@ describe('WslHookRelayManager', () => {
         idleStopMs: 1_000,
         spawnRelay: vi.fn(() => Object.assign(fakeChild(), { kill }))
       })
-      manager.ensureForDistro('Ubuntu', codexHome)
+      void manager.ensureForDistro('Ubuntu', codexHome)
       await vi.waitFor(() => expect(manager.getGuestEndpointFilePath('Ubuntu')).not.toBeNull())
       vi.useFakeTimers({ toFake: ['setTimeout', 'clearTimeout'] })
       try {
@@ -393,14 +393,14 @@ describe('WslHookRelayManager', () => {
       const bridges = presence()
       bridges.set(0)
       const { manager, deps } = createManager({ bridgePtyPresence: bridges, idleStopMs: 1 })
-      manager.ensureForDistro('Ubuntu', codexHome)
+      void manager.ensureForDistro('Ubuntu', codexHome)
       await vi.waitFor(() =>
         expect(deps.warn).toHaveBeenCalledWith(expect.stringContaining('stopped: idle'))
       )
       vi.mocked(deps.installCodex).mockClear()
       bridges.set(1)
 
-      manager.ensureForDistro('Ubuntu')
+      void manager.ensureForDistro('Ubuntu')
       await vi.waitFor(() => expect(manager.getGuestEndpointFilePath('Ubuntu')).not.toBeNull())
       expect(deps.spawnRelay).toHaveBeenCalledTimes(2)
       expect(deps.installCodex).toHaveBeenCalledWith(codexHome, 'Ubuntu')
@@ -411,12 +411,12 @@ describe('WslHookRelayManager', () => {
   it('stops live relays and refuses to revive them once agent status hooks are switched off', async () => {
     const settings = { agentStatusHooksEnabled: true }
     const { manager, deps } = createManager({ managedHookSettings: () => settings })
-    manager.ensureForDistro('Ubuntu', codexHome)
+    void manager.ensureForDistro('Ubuntu', codexHome)
     await vi.waitFor(() => expect(deps.installHooks).toHaveBeenCalledTimes(1))
 
     settings.agentStatusHooksEnabled = false
     manager.disposeAll({ permanent: false })
-    manager.ensureForDistro('Ubuntu')
+    void manager.ensureForDistro('Ubuntu')
     await new Promise((resolve) => setTimeout(resolve, 20))
 
     expect(deps.spawnRelay).toHaveBeenCalledTimes(1)
@@ -438,7 +438,7 @@ describe('WslHookRelayManager', () => {
       isDistroRunning,
       managedHookSettings: () => settings
     })
-    manager.ensureForDistro('Ubuntu')
+    void manager.ensureForDistro('Ubuntu')
     await vi.waitFor(() => expect(deps.spawnRelay).toHaveBeenCalledTimes(1))
 
     settings.agentStatusHooksEnabled = false
@@ -466,7 +466,7 @@ describe('WslHookRelayManager', () => {
           })
       )
     })
-    manager.ensureForDistro('Ubuntu')
+    void manager.ensureForDistro('Ubuntu')
     await vi.waitFor(() => expect(deps.spawnRelay).toHaveBeenCalledTimes(1))
 
     manager.disposeAll({ permanent: false })
@@ -497,7 +497,7 @@ describe('WslHookRelayManager', () => {
 
     vi.useFakeTimers()
     try {
-      manager.ensureForDistro('Ubuntu')
+      void manager.ensureForDistro('Ubuntu')
       await flush()
       expect(spawnRelay).toHaveBeenCalledTimes(1)
       expect(deps.warn).toHaveBeenCalledWith(expect.stringContaining('relay died before sentinel'))
@@ -506,7 +506,7 @@ describe('WslHookRelayManager', () => {
       expect(isDistroRunning).toHaveBeenCalledTimes(1)
 
       // A fresh ensure replaces the failed state while its restart probe is pending.
-      manager.ensureForDistro('Ubuntu')
+      void manager.ensureForDistro('Ubuntu')
       await flush()
       expect(spawnRelay).toHaveBeenCalledTimes(2)
 
@@ -515,7 +515,7 @@ describe('WslHookRelayManager', () => {
       await flush()
       expect(deps.warn).not.toHaveBeenCalledWith(expect.stringContaining('distro not running'))
 
-      manager.ensureForDistro('Ubuntu')
+      void manager.ensureForDistro('Ubuntu')
       await flush()
       expect(spawnRelay).toHaveBeenCalledTimes(2)
     } finally {

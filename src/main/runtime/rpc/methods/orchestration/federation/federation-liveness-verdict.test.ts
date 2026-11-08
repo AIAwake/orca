@@ -202,7 +202,7 @@ describe('federation host liveness verdicts', () => {
   it('publishes a real owning-host natural exit through show, fleet, and release', async () => {
     const host = await createRealHost()
     try {
-      host.hostRuntime.onPtyExit(REAL_PTY_ID, 0, 'incarnation-real', {
+      void host.hostRuntime.onPtyExit(REAL_PTY_ID, 0, 'incarnation-real', {
         hostExitConfirmed: true
       })
       const closeTerminal = vi.spyOn(host.hostRuntime, 'closeTerminal')
@@ -237,7 +237,7 @@ describe('federation host liveness verdicts', () => {
   it('keeps real SSH contact loss unverifiable through federation show', async () => {
     const host = await createRealHost('ssh-real-host')
     try {
-      host.hostRuntime.onPtyExit(REAL_PTY_ID, -1, 'incarnation-real')
+      void host.hostRuntime.onPtyExit(REAL_PTY_ID, -1, 'incarnation-real')
 
       await expect(
         host.callHost('orchestration.federationShow', { dispatchId: DISPATCH_ID })

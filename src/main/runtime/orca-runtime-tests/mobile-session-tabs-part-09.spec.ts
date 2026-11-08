@@ -362,7 +362,7 @@ describe('OrcaRuntimeService', () => {
 
     it('resumes once the other pane holding the session has proven exited', async () => {
       const { runtime, spawn } = makeRuntimeWithOtherPaneHolder([])
-      runtime.onPtyExit('other-pty', 0)
+      void runtime.onPtyExit('other-pty', 0)
 
       await userActivate(runtime)
 

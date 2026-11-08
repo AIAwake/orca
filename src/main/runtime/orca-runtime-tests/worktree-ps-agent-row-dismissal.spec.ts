@@ -227,7 +227,7 @@ describe('worktree ps follows a dismissal out of the agent-status store', () => 
       })
       expect((await runtime.getWorktreePs()).worktrees[0]?.agents).toEqual([])
 
-      runtime.onPtyExit('dismiss-pty', 0)
+      void runtime.onPtyExit('dismiss-pty', 0)
       await vi.waitFor(() => expect(events).toHaveLength(3))
       expect(events[2]).toMatchObject({ snapshotVersion: before.snapshotVersion + 4 })
       expect(
@@ -306,7 +306,7 @@ describe('worktree ps follows a dismissal out of the agent-status store', () => 
       type: 'terminal',
       agentStatus: { paneKey, prompt: 'legacy task' }
     })
-    runtime.onPtyExit('legacy-pty', 0)
+    void runtime.onPtyExit('legacy-pty', 0)
     expect(statusWiring.statusStore.getStatusSnapshot()).toEqual([])
     statusWiring.statusStore.stop()
   })

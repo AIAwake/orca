@@ -401,7 +401,7 @@ describe('mobile subscribe integration', () => {
       await runtime.handleMobileSubscribe('pty-1', 'client-a', { cols: 45, rows: 20 })
       runtime.handleMobileUnsubscribe('pty-1', 'client-a')
 
-      runtime.onPtyExit('pty-1', 0)
+      void runtime.onPtyExit('pty-1', 0)
       expect(runtime.isMobileSubscriberActive('pty-1')).toBe(false)
       expect(runtime.getMobileDisplayMode('pty-1')).toBe('auto')
 
@@ -413,7 +413,7 @@ describe('mobile subscribe integration', () => {
       await runtime.handleMobileSubscribe('pty-1', 'client-a', { cols: 45, rows: 20 })
       runtime.handleMobileUnsubscribe('pty-1', 'client-a')
 
-      runtime.onPtyExit('pty-2', 0)
+      void runtime.onPtyExit('pty-2', 0)
 
       await vi.advanceTimersByTimeAsync(LEGACY_RESTORE_MS)
       expect(ptySizes.get('pty-1')).toEqual({ cols: 150, rows: 40 })

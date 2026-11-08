@@ -57,7 +57,7 @@ describe('OrcaRuntimeService', () => {
           }
         ]
       })
-      runtime.onPtyExit(ptyId, -1)
+      void runtime.onPtyExit(ptyId, -1)
 
       runtime.syncWindowGraph(1, {
         tabs: [],
@@ -480,7 +480,7 @@ describe('OrcaRuntimeService', () => {
         }
       ]
     })
-    runtime.onPtyExit(ptyId, 0)
+    void runtime.onPtyExit(ptyId, 0)
     runtime.syncWindowGraph(1, {
       tabs: [],
       leaves: [],
