@@ -46,7 +46,7 @@ describe('useNativeChatContextClearFloor', () => {
     hook.rerender({ epoch: 'epoch-a', items: [message(1), message(2), clear(3)] })
     expect(hook.result.current).toEqual({ shown: [1, 2, 3], clearing: true, clears: 0 })
 
-    act(() => vi.advanceTimersByTime(NATIVE_CHAT_CONTEXT_CLEAR_FADE_MS))
+    void act(() => vi.advanceTimersByTime(NATIVE_CHAT_CONTEXT_CLEAR_FADE_MS))
     expect(hook.result.current).toEqual({ shown: [3], clearing: false, clears: 1 })
   })
 

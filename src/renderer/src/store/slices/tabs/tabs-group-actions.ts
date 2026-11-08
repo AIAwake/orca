@@ -226,7 +226,7 @@ export function createTabsGroupActions(
           emptySplitGroup(worktreeId, newGroupId)
         )
       )
-      get().recordFeatureInteraction?.('terminal-panes')
+      void get().recordFeatureInteraction?.('terminal-panes')
       return newGroupId
     }
   }

@@ -189,7 +189,7 @@ export function useSshWorkspaceBrowserRoute(
     tryWithoutProbe: () => {
       // Persist the override so this host isn't re-nagged on every launch.
       if (sshTargetId && probeSkippedTargetIds?.includes(sshTargetId) !== true) {
-        updateSettings({
+        void updateSettings({
           browserSshWorkspaceRoutingProbeSkippedTargetIds: [
             ...(probeSkippedTargetIds ?? []),
             sshTargetId
@@ -204,7 +204,7 @@ export function useSshWorkspaceBrowserRoute(
       }
       const disabled = browserRoutingSettings?.browserSshWorkspaceRoutingDisabledTargetIds ?? []
       if (!disabled.includes(sshTargetId)) {
-        updateSettings({
+        void updateSettings({
           browserSshWorkspaceRoutingDisabledTargetIds: [...disabled, sshTargetId]
         })
       }

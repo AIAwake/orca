@@ -169,7 +169,7 @@ export function ConversationTab({
       })
       onBodyUpdated(resolvedBodyDraft)
       setBodyEditing(false)
-      useAppStore.getState().recordFeatureInteraction('github-tasks')
+      void useAppStore.getState().recordFeatureInteraction('github-tasks')
       toast.success(
         translate('auto.components.GitHubItemDialog.5221548274', 'Description updated.')
       )

@@ -45,7 +45,7 @@ describe('createIpcPtyTransport', () => {
       const transport = createIpcPtyTransport({ connectionId })
       expect(transport.getExecutionHostId?.()).toBe(connectionId ? 'ssh:qa' : 'local')
       expect(transport.getRuntimeEnvironmentId?.()).toBeNull()
-      transport.destroy?.()
+      void transport.destroy?.()
     }
   })
 

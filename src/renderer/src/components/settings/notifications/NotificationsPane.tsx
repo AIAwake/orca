@@ -77,7 +77,7 @@ export function NotificationsPane({
   }
 
   const handleSendTestNotification = async (): Promise<void> => {
-    useAppStore.getState().recordFeatureInteraction('notifications')
+    void useAppStore.getState().recordFeatureInteraction('notifications')
     const showsMacPermissionCard = macPermissionState !== null
     const outcome = await sendNotificationSettingsTestNotification(
       notificationSettings,
@@ -114,7 +114,7 @@ export function NotificationsPane({
         checked={notificationSettings.enabled}
         onToggle={() => {
           if (!notificationSettings.enabled) {
-            useAppStore.getState().recordFeatureInteraction('notifications')
+            void useAppStore.getState().recordFeatureInteraction('notifications')
           }
           void updateNotificationSettings({ enabled: !notificationSettings.enabled })
         }}

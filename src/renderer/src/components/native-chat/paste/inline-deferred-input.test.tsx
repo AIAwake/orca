@@ -180,7 +180,7 @@ it.each(['clean', 'success', 'cancel', 'no-field', 'no-field-oversize', 'long'] 
     }
     view.rerender(<Field scope={SCOPE} />)
     const bottom = promptEditor(screen.getByRole('textbox'))
-    act(() => bottom.commands.setTextSelection(bottom.state.doc.content.size - 1))
+    void act(() => bottom.commands.setTextSelection(bottom.state.doc.content.size - 1))
     if (mode.startsWith('no-field')) {
       view.unmount()
     }
@@ -279,7 +279,7 @@ it.each(['/clear', '@/same.txt'] as const)(
     view.rerender(<Field scope={SCOPE} />)
     changePrompt(screen.getByRole('textbox'), before)
     const editor = promptEditor(screen.getByRole('textbox'))
-    act(() => editor.commands.setTextSelection(editor.state.doc.content.size - 1))
+    void act(() => editor.commands.setTextSelection(editor.state.doc.content.size - 1))
     act(() =>
       expect(
         settleNativeChatPendingAttachmentReferences(key, [

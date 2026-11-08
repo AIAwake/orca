@@ -237,14 +237,14 @@ export function createTabsCloseActions(
         })
       ) {
         if (opts?.recordInteraction !== false) {
-          get().recordFeatureInteraction?.('terminal-tabs')
+          void get().recordFeatureInteraction?.('terminal-tabs')
         }
         return { closedTabId: tabId, wasLastTab, worktreeId }
       }
       closeHere()
       retireEditor()
       if (opts?.recordInteraction !== false) {
-        get().recordFeatureInteraction?.('terminal-tabs')
+        void get().recordFeatureInteraction?.('terminal-tabs')
       }
       return { closedTabId: tabId, wasLastTab, worktreeId }
     }

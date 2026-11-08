@@ -51,7 +51,7 @@ describe('createIpcPtyTransport: input kind', () => {
     void predecessor.connect({ url: '', callbacks: {} })
     predecessor.sendInput('typed-early', 'driving')
     predecessor.sendInput('startup', 'launch')
-    predecessor.destroy?.()
+    void predecessor.destroy?.()
 
     const successor = createIpcPtyTransport({ preconnectInput: captured })
     spawn.resolve({ id: 'pty-1' })

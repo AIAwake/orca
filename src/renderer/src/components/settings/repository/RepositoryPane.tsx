@@ -154,7 +154,7 @@ export function RepositoryPane({
   )
 
   const updateSelectedRepoHookSettings = (nextSettings: RepoHookSettings) => {
-    updateSelectedRepo(repo.id, {
+    void updateSelectedRepo(repo.id, {
       hookSettings: nextSettings
     })
   }

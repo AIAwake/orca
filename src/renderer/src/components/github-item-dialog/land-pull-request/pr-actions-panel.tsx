@@ -135,7 +135,7 @@ export function PRActionsPanel({
         prRepo,
         updates: { state: nextState }
       })
-      useAppStore.getState().recordFeatureInteraction('github-tasks')
+      void useAppStore.getState().recordFeatureInteraction('github-tasks')
       toast.success(
         nextState === 'closed'
           ? translate('auto.components.GitHubItemDialog.9f88657c4e', 'Pull request closed')
@@ -232,7 +232,7 @@ export function PRActionsPanel({
           { local: false }
         )
       }
-      useAppStore.getState().recordFeatureInteraction('github-tasks')
+      void useAppStore.getState().recordFeatureInteraction('github-tasks')
       toast.success(translate('auto.components.GitHubItemDialog.dbe5e2448e', 'Pull request merged'))
     } catch {
       toast.error(
@@ -302,7 +302,7 @@ export function PRActionsPanel({
           { local: false }
         )
       }
-      useAppStore.getState().recordFeatureInteraction('github-tasks')
+      void useAppStore.getState().recordFeatureInteraction('github-tasks')
       toast.success(
         enabled
           ? translate('auto.components.GitHubItemDialog.a35ea5a0f6', 'Auto-merge enabled')

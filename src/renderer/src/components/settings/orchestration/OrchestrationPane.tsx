@@ -129,7 +129,7 @@ export function OrchestrationPane({
             installDisabled={Boolean(activeSkillRuntime.installDisabledReason)}
             icon={<Workflow className="size-5" />}
             onBeforeInstall={() => {
-              useAppStore.getState().recordFeatureInteraction('agent-orchestration-setup')
+              void useAppStore.getState().recordFeatureInteraction('agent-orchestration-setup')
             }}
             // COMPAT(wsl-bridge): removed when WSL runs as an orcad host.
             actionHint={

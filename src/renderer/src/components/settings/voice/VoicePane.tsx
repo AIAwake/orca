@@ -66,7 +66,7 @@ export function VoicePane({ settings, updateSettings }: VoicePaneProps): React.J
 
   useEffect(() => {
     let cancelled = false
-    refreshModelStates()
+    void refreshModelStates()
     void window.api.speech
       .getCatalog()
       .then((nextCatalog) => {
@@ -84,7 +84,7 @@ export function VoicePane({ settings, updateSettings }: VoicePaneProps): React.J
         setOpenAiKeyProtection(status.protection)
         if (status.configured !== voiceSettings.openAiApiKeyConfigured) {
           updateVoiceSettings({ openAiApiKeyConfigured: status.configured })
-          refreshModelStates()
+          void refreshModelStates()
         }
       })
       .catch(() => {})
@@ -95,7 +95,7 @@ export function VoicePane({ settings, updateSettings }: VoicePaneProps): React.J
 
   useEffect(() => {
     const cleanup = window.api.speech.onDownloadProgress(() => {
-      refreshModelStates()
+      void refreshModelStates()
     })
     return cleanup
   }, [refreshModelStates])

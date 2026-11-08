@@ -50,7 +50,7 @@ describe('useNativeChatSendLifecycle', () => {
     )
 
     act(() => result.current.trackPendingSend(stalled, 'pending-1'))
-    act(() => vi.advanceTimersByTime(stalled.settleAfterMs + 1_000))
+    void act(() => vi.advanceTimersByTime(stalled.settleAfterMs + 1_000))
     rerender({ targetPtyId: 'pty-2' })
 
     expect(stalled.cancel).toHaveBeenCalledOnce()

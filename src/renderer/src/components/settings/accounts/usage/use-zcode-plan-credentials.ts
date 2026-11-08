@@ -83,7 +83,7 @@ export function useZcodePlanCredentials(
       }
       setStatus(next)
       setApiKeyDraft('')
-      recordFeatureInteraction('usage-tracking')
+      void recordFeatureInteraction('usage-tracking')
       if (action === 'save') {
         toast.success(
           translate(

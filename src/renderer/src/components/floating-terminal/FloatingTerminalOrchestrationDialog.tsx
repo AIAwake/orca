@@ -125,7 +125,7 @@ export function FloatingTerminalOrchestrationDialog({
             'Install skill'
           )}
           onBeforeInstall={() => {
-            useAppStore.getState().recordFeatureInteraction('agent-orchestration-setup')
+            void useAppStore.getState().recordFeatureInteraction('agent-orchestration-setup')
           }}
           onRecheck={recheckOrchestrationSkill}
         />

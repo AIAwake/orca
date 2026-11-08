@@ -161,10 +161,10 @@ export function createTabsCreateActions(
         releaseUnreferencedEditorContent(get, replacedEditorId)
       }
       if (init?.recordInteraction !== false) {
-        get().recordFeatureInteraction?.('terminal-tabs')
+        void get().recordFeatureInteraction?.('terminal-tabs')
       }
       if (splitGroupId) {
-        get().recordFeatureInteraction?.('terminal-panes')
+        void get().recordFeatureInteraction?.('terminal-panes')
       }
       return created
     },
@@ -251,10 +251,10 @@ export function createTabsCreateActions(
         }
       })
       if (created && init?.recordInteraction !== false) {
-        get().recordFeatureInteraction?.('terminal-tabs')
+        void get().recordFeatureInteraction?.('terminal-tabs')
       }
       if (moved && init?.recordInteraction !== false) {
-        get().recordFeatureInteraction?.('tab-splits')
+        void get().recordFeatureInteraction?.('tab-splits')
       }
       return created
     }

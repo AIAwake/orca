@@ -107,7 +107,7 @@ export function useWorktreeSidebarHeaderDrag(args: {
   const commitRepoReorder = useCallback(
     (orderedIds: string[]) => {
       suppressScrollCorrectionForHeaderCommit()
-      reorderRepos(orderedIds)
+      void reorderRepos(orderedIds)
     },
     [reorderRepos, suppressScrollCorrectionForHeaderCommit]
   )

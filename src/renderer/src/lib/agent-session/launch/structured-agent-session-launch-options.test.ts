@@ -246,7 +246,7 @@ describe('picks made while a chat launches', () => {
     })
 
     const modelPick = holdStructuredAgentSessionLaunchOption(SESSION_ID, 'model', 'gpt-picked')
-    holdStructuredAgentSessionLaunchOption(SESSION_ID, 'effort', 'high')
+    void holdStructuredAgentSessionLaunchOption(SESSION_ID, 'effort', 'high')
     created.resolve({ sessionId: SESSION_ID, fence: 7 })
     await settle()
 
@@ -342,11 +342,11 @@ describe('picks made while a chat launches', () => {
   it('applies a pick made while the earlier ones are being applied', async () => {
     mocks.launch.mockResolvedValue({ sessionId: SESSION_ID, fence: 1 })
     const launch = startStructuredAgentLaunch(WORKTREE_ID, 'codex', { requestId: 'request-2' })
-    holdStructuredAgentSessionLaunchOption(SESSION_ID, 'model', 'gpt-picked')
+    void holdStructuredAgentSessionLaunchOption(SESSION_ID, 'model', 'gpt-picked')
     await settle()
     expect(setOptionReplies).toHaveLength(1)
 
-    holdStructuredAgentSessionLaunchOption(SESSION_ID, 'model', 'gpt-repicked')
+    void holdStructuredAgentSessionLaunchOption(SESSION_ID, 'model', 'gpt-repicked')
     setOptionReplies[0]!.resolve(ACCEPTED)
     await settle()
     expect(lifecycle()).toBe('pending')
@@ -361,7 +361,7 @@ describe('picks made while a chat launches', () => {
     mocks.launch.mockReturnValue(created.promise)
     const launch = startStructuredAgentLaunch(WORKTREE_ID, 'codex', { requestId: 'request-tier' })
     const tierPick = holdStructuredAgentSessionLaunchOption(SESSION_ID, 'serviceTier', 'priority')
-    holdStructuredAgentSessionLaunchOption(SESSION_ID, 'model', 'gpt-nofast')
+    void holdStructuredAgentSessionLaunchOption(SESSION_ID, 'model', 'gpt-nofast')
     created.resolve({ sessionId: SESSION_ID, fence: 3 })
     await settle()
     expect(setOptionReplies).toHaveLength(2)
@@ -448,7 +448,7 @@ describe('picks made while a chat launches', () => {
       .mockRejectedValueOnce(new StructuredAgentSessionCreateRefusalError('unsupported'))
       .mockResolvedValueOnce({ sessionId: SESSION_ID, fence: 2 })
     startStructuredAgentLaunch(WORKTREE_ID, 'codex', { requestId: 'request-5' })
-    holdStructuredAgentSessionLaunchOption(SESSION_ID, 'model', 'gpt-picked')
+    void holdStructuredAgentSessionLaunchOption(SESSION_ID, 'model', 'gpt-picked')
     await settle()
     expect(lifecycle()).toBe('failed')
     expect(mutations()).toEqual([])
@@ -467,7 +467,7 @@ describe('picks made while a chat launches', () => {
     const created = deferred<{ sessionId: string; fence: number }>()
     mocks.launch.mockReturnValue(created.promise)
     startStructuredAgentLaunch(WORKTREE_ID, 'codex', { requestId: 'request-6' })
-    holdStructuredAgentSessionLaunchOption(SESSION_ID, 'model', 'gpt-picked')
+    void holdStructuredAgentSessionLaunchOption(SESSION_ID, 'model', 'gpt-picked')
 
     const otherHost = { kind: 'environment', environmentId: 'surviving-held-chat' } as const
     const survivor = structuredSessionSelectionController(otherHost, SESSION_ID, 'codex')

@@ -144,7 +144,7 @@ export function SshPane({ addTargetIntentSignal }: SshPaneProps): React.JSX.Elem
         const result = await window.api.ssh.addTarget({ target: savePayload.payload.target })
         useAppStore.getState().recordSshRepoReadoptions(result.repoReadoptions)
       }
-      recordFeatureInteraction('ssh')
+      void recordFeatureInteraction('ssh')
       if (!mountedRef.current) {
         return
       }
@@ -233,7 +233,7 @@ export function SshPane({ addTargetIntentSignal }: SshPaneProps): React.JSX.Elem
   const handleConnect = async (targetId: string): Promise<void> => {
     try {
       await window.api.ssh.connect({ targetId })
-      recordFeatureInteraction('ssh')
+      void recordFeatureInteraction('ssh')
     } catch (err) {
       toastSshConnectFailure(
         targetId,
@@ -246,7 +246,7 @@ export function SshPane({ addTargetIntentSignal }: SshPaneProps): React.JSX.Elem
   const handleDisconnect = async (targetId: string): Promise<void> => {
     try {
       await window.api.ssh.disconnect({ targetId })
-      recordFeatureInteraction('ssh')
+      void recordFeatureInteraction('ssh')
     } catch (err) {
       toast.error(
         err instanceof Error

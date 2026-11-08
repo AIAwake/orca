@@ -141,7 +141,7 @@ export function SshStatusSegment({
   const connectRuntimeHost = useCallback(
     async (environmentId: string): Promise<void> => {
       if (await connectRuntimeHostAndReloadProjects(environmentId)) {
-        recordFeatureInteraction('ssh')
+        void recordFeatureInteraction('ssh')
       }
     },
     [recordFeatureInteraction]
@@ -151,7 +151,7 @@ export function SshStatusSegment({
       try {
         await window.api.runtimeEnvironments.disconnect({ selector: environmentId })
         await readRuntimeHostStatusSnapshots()
-        recordFeatureInteraction('ssh')
+        void recordFeatureInteraction('ssh')
       } catch (err) {
         toast.error(
           err instanceof Error
@@ -198,7 +198,7 @@ export function SshStatusSegment({
         if (open) {
           void hydrateRuntimeEnvironmentStatuses()
           void syncSshConfigTargetsPassively()
-          recordFeatureInteraction('ssh')
+          void recordFeatureInteraction('ssh')
         }
       }}
     >
@@ -291,7 +291,7 @@ export function SshStatusSegment({
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onSelect={() => {
-            recordFeatureInteraction('ssh')
+            void recordFeatureInteraction('ssh')
             openSettingsTarget({ pane: 'servers', repoId: null })
             setActiveView('settings')
           }}

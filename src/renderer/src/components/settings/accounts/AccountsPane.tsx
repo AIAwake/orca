@@ -214,7 +214,7 @@ export function AccountsPane({
       return
     }
     recordedOpenCodeSettingEditsRef.current.add(field)
-    recordFeatureInteraction('usage-tracking')
+    void recordFeatureInteraction('usage-tracking')
   }
   // Usage credentials belong beside the selected host’s poller.
   const usageCredentialHost = { owner: accountOwner, label: remoteServerLabel }

@@ -103,7 +103,7 @@ export function PortRow({
   const handleOpen = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.stopPropagation()
-      recordFeatureInteraction('ports')
+      void recordFeatureInteraction('ports')
       const openInOrcaBrowser = resolvePortOpenInOrcaBrowser({
         settings,
         // Keyboard activation has no pointer modifier intent for the system-browser escape hatch.
@@ -145,7 +145,7 @@ export function PortRow({
   const handleCopy = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
       event.stopPropagation()
-      recordFeatureInteraction('ports')
+      void recordFeatureInteraction('ports')
       const address = addressForPort(port)
       void window.api.ui.writeClipboardText(address)
       toast.success(
@@ -165,7 +165,7 @@ export function PortRow({
       if (!canStopWorkspacePort(port)) {
         return
       }
-      recordFeatureInteraction('ports')
+      void recordFeatureInteraction('ports')
       const run = async (): Promise<void> => {
         const result = await killWorkspacePortForTarget(runtimeTarget, {
           repoId: port.owner.repoId,

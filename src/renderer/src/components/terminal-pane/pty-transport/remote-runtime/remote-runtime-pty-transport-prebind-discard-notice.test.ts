@@ -105,7 +105,7 @@ describe('remote pre-bind typing discard notice', () => {
     await vi.waitFor(() => expect(inputFrameTexts().join('')).toBe('echo hi\r'))
 
     expect(onTypingDiscardedBeforeBind).not.toHaveBeenCalled()
-    transport.destroy?.()
+    void transport.destroy?.()
   })
 
   it('says nothing once the pane is closed', async () => {
@@ -117,7 +117,7 @@ describe('remote pre-bind typing discard notice', () => {
     expect(transport.sendInput('lost\r', 'driving')).toBe(true)
     const connecting = transport.connect({ url: '', callbacks: {} })
     await waitForCreate()
-    transport.destroy?.()
+    void transport.destroy?.()
     created.resolve(new Error('offline'))
     await connecting
     await flushAsyncTicks()

@@ -156,7 +156,7 @@ describe('reader navigation', () => {
     paint(container)
     expect(retainHistory).toHaveBeenCalledOnce()
     rerender(view(false))
-    act(() => deliverResizes())
+    void act(() => deliverResizes())
     expect(release).not.toHaveBeenCalled()
     rerender(view(true))
     paint(container)
@@ -497,7 +497,7 @@ describe('reader navigation', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Toggle turn details' }))
     expect(window?.querySelectorAll('[data-index]').length ?? 0).toBeGreaterThan(beforeSlots)
     paint(container)
-    act(() => vi.advanceTimersByTime(160))
+    void act(() => vi.advanceTimersByTime(160))
     paint(container)
 
     expect(distanceFromBottom(container)).toBe(0)
@@ -581,7 +581,7 @@ describe('disclosure following across retained pane visibility', () => {
       if (hideBeforeSettlement) {
         visible = false
         rendered.rerender(view(initial))
-        act(() => vi.advanceTimersByTime(300))
+        void act(() => vi.advanceTimersByTime(300))
         visible = true
         rendered.rerender(view(initial))
       }
@@ -613,7 +613,7 @@ describe('disclosure following across retained pane visibility', () => {
       visible = false
       rendered.rerender(view(growWhileHidden ? grown : initial))
       paint(rendered.container)
-      act(() => vi.advanceTimersByTime(300))
+      void act(() => vi.advanceTimersByTime(300))
       visible = true
       rendered.rerender(view(growWhileHidden ? grown : initial))
       paint(rendered.container)

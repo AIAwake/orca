@@ -53,7 +53,7 @@ export function GrokUsagePane(): React.JSX.Element {
           <Button
             size="sm"
             onClick={() => {
-              recordFeatureInteraction('usage-tracking')
+              void recordFeatureInteraction('usage-tracking')
               openGrokAccounts()
             }}
           >

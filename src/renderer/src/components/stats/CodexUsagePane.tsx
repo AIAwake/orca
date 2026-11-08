@@ -62,7 +62,7 @@ export function CodexUsagePane(): React.JSX.Element {
   }, [fetchCodexUsage])
 
   const handleSetEnabled = (enabled: boolean): void => {
-    recordFeatureInteraction('usage-tracking')
+    void recordFeatureInteraction('usage-tracking')
     void setCodexUsageEnabled(enabled)
   }
 
