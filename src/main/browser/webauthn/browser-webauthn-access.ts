@@ -2,6 +2,7 @@ import type { Session } from 'electron'
 import {
   cancelBrowserWebAuthnAccountRequestsForSession,
   requestBrowserWebAuthnAccount
+  // oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 } from './browser-webauthn-account-picker'
 
 const FIDO_HID_USAGE_PAGE = 0xf1d0

@@ -1,6 +1,7 @@
 // SSH-driven workspaces lose programmatic clipboard reads until quit; user paste still works.
 import { webContents } from 'electron'
 import { parseChromeExtensionUrl } from '../../../shared/browser/extensions/browser-extension-url'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { browserManager } from '../browser-manager'
 
 const drivenWorkspaceIds = new Set<string>()

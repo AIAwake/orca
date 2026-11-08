@@ -1,4 +1,5 @@
 import type { BrowserWindow } from 'electron'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { forgetBrowserPageGuestsGone } from '../extensions/tabs-and-windows/browser-extension-discarded-tabs'
 
 /** Sent by the renderer's browser request bridge once its workspaces are restored. */

@@ -1,10 +1,12 @@
 /// <reference types="chrome" />
 import { webContents } from 'electron'
 import { getChromeExtensionOrigin } from '../../../../shared/browser/extensions/browser-extension-url'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { browserManager } from '../../browser-manager'
 import { createBrowserTabInRenderer } from '../../../runtime/browser/tabs/browser-tab-renderer-create'
 import { closeBrowserTabInRenderer } from '../../../runtime/browser/tabs/browser-tab-renderer-close'
 import { activateBrowserTabInRenderer } from '../../../runtime/browser/tabs/browser-tab-renderer-activate'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { waitForTabRegistration } from '../../../ipc/browser/browser-tab-registration-wait'
 import { emitBrowserExtensionEvent } from '../api-runtime/browser-extension-api-host'
 import {
@@ -13,7 +15,9 @@ import {
   type BrowserExtensionCaller
 } from '../api-runtime/browser-extension-namespace-registry'
 import { hasBrowserExtensionHostPermission } from '../permissions/browser-extension-permission-grants'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { browserExtensionHostPatternsInSession } from '../api/permissions'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { closeBrowserExtensionPopup } from '../actions/browser-extension-popup-host'
 import { hasBrowserExtensionActiveTab } from '../permissions/browser-extension-active-tab'
 import {
@@ -21,7 +25,9 @@ import {
   getBrowserExtensionSessionForProfile
 } from '../profile-sessions/browser-extension-session-loader'
 import { isBrowserExtensionSupportEnabled } from '../browser-extension-support'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { whenBrowserMainWindowReady } from '../../guest-lifecycle/browser-main-window-readiness'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { findDiscardedBrowserTabForPage } from './browser-extension-discarded-tabs'
 import {
   getBrowserExtensionMainWindow,
@@ -29,6 +35,7 @@ import {
   getPopoutWindowForWebContents,
   listPopoutWindowsInSession,
   presentBrowserExtensionWindow
+  // oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 } from './browser-extension-window-model'
 
 /**

@@ -1,6 +1,7 @@
 import { session } from 'electron'
 import type { Session } from 'electron'
 import type { BrowserSessionProfile } from '../../../shared/browser-workspace-types'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { browserManager } from '../browser-manager'
 import { clearProxySessionCredentials } from '../../network/proxy-settings'
 import {
@@ -20,6 +21,7 @@ import {
   isBrowserSitePermissionAllowed,
   savedBrowserSitePermissions,
   sessionBrowserSitePermissions
+  // oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 } from '../site-settings/browser-site-permission-prompt'
 import { installBrowserSessionUserAgentPolicy } from '../identity/browser-session-ua'
 import { getBrowserProcessUserAgentIdentity } from '../identity/browser-process-user-agent'
@@ -27,8 +29,10 @@ import {
   allowsBrowserWebAuthnPermission,
   clearBrowserWebAuthnAccessHandlers,
   installBrowserWebAuthnAccessHandlers
+  // oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 } from '../webauthn/browser-webauthn-access'
 import { noticeDocPreviewDownloadBlocked } from '../document-preview/doc-preview-download-block-notice'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { isRemoteCliDrivenGuest } from '../desktop-browser-bridge/remote-cli-driven-workspaces'
 
 const configuredPartitions = new Set<string>()

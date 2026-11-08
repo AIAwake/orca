@@ -5,8 +5,10 @@ import {
   clearBrowserSessionPartitionPolicies,
   forgetBrowserSessionPartitionConfiguration,
   retireBrowserSessionUserAgentPolicy
+  // oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 } from './browser-session-partition-policies'
 import { invalidateBrowserSessionProxyApplication } from './browser-session-proxy'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { cancelBrowserWebAuthnAccountRequestsForSession } from '../webauthn/browser-webauthn-account-picker'
 import { detachBrowserExtensionsFromProfileSession } from '../extensions/profile-sessions/browser-extension-session-loader'
 

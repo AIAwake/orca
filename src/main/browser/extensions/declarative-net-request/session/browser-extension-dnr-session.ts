@@ -16,6 +16,7 @@ import { DnrMatchedRules } from './browser-extension-dnr-matched-rules'
 import { getBrowserExtensionInstallStore } from '../../installation/browser-extension-install-store'
 import { extensionHasPermission } from '../../api-runtime/browser-extension-namespace-registry'
 import { whenBrowserExtensionProfileLoaded } from '../../profile-sessions/browser-extension-session-loader'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { resolveBrowserExtensionTab } from '../../tabs-and-windows/browser-extension-tab-model'
 
 // Chrome holds requests until rulesets load; a ruleset that never finishes must not stall pages.

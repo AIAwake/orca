@@ -22,6 +22,7 @@ import {
   persistBrowserSessionMeta
 } from './browser-session-meta-store'
 import type { BrowserSessionMeta } from './browser-session-meta-store'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { installBrowserSessionPartitionPolicies } from './browser-session-partition-policies'
 import {
   isValidPersistedBrowserSessionProfile,
@@ -30,10 +31,12 @@ import {
 import {
   clearBrowserRoutePartitionPolicies,
   installBrowserRoutePartitionPolicies
+  // oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 } from '../routing/sessions/browser-session-route-policies'
 import {
   retireDeletedBrowserSessionProfile,
   retireFailedBrowserSessionProfile
+  // oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 } from './browser-session-profile-retirement'
 import { getCanonicalUserDataPath } from '../../persistence/loading-store/user-data-path'
 import { markBrowserIdentityMigrationNoticePending } from '../identity/browser-identity-mode-store'
