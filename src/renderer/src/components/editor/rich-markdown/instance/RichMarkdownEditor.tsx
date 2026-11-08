@@ -284,7 +284,7 @@ export default function RichMarkdownEditor({
   })
 
   const handleLocalImagePick = useLocalImagePick(editor, filePath, worktreeId, runtimeEnvironmentId)
-  handleLocalImagePickRef.current = handleLocalImagePick
+  handleLocalImagePickRef.current = () => void handleLocalImagePick()
 
   const {
     handleLinkSave,
@@ -316,7 +316,7 @@ export default function RichMarkdownEditor({
         payload,
         editor: ed,
         toggleLink: toggleLinkFromToolbar,
-        pickImage: handleLocalImagePick
+        pickImage: () => void handleLocalImagePick()
       })
     })
   }, [handleLocalImagePick, toggleLinkFromToolbar])

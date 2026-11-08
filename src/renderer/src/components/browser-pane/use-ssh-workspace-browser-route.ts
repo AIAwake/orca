@@ -235,12 +235,13 @@ export function useSshWorkspaceProbeSkipRecheck(worktreeId: string): (() => void
   if (!targetId || probeSkippedTargetIds?.includes(targetId) !== true) {
     return null
   }
-  return () =>
-    updateSettings({
+  return () => {
+    void updateSettings({
       browserSshWorkspaceRoutingProbeSkippedTargetIds: (probeSkippedTargetIds ?? []).filter(
         (id) => id !== targetId
       )
     })
+  }
 }
 
 export function useSshWorkspaceBrowserLoadFailureRoute(worktreeId: string): {

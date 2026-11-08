@@ -223,7 +223,7 @@ export function createAgentModelCatalogFilePersistence(
     save(snapshot) {
       pending = snapshot
       if (timer === null) {
-        timer = setTimeout(flush, SAVE_COALESCE_MS)
+        timer = setTimeout(() => void flush(), SAVE_COALESCE_MS)
         timer.unref?.()
       }
     },

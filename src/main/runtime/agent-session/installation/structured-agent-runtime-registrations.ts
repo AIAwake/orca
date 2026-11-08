@@ -130,7 +130,7 @@ function createClaudeAdapter(
     logger: deps.logger,
     onChildWorkEvidence: (sessionId, evidence, producer) =>
       host()?.publishChildWorkEvidence(sessionId, evidence, producer),
-    onDispatchSettledLate: followUps.onDispatchSettledLate,
+    onDispatchSettledLate: (settlement) => void followUps.onDispatchSettledLate(settlement),
     ...(deps.openClaudeConnection ? { openClaudeConnection: deps.openClaudeConnection } : {}),
     ...(deps.readProcessStartTime ? { readProcessStartTime: deps.readProcessStartTime } : {})
   })
@@ -191,7 +191,7 @@ function createAcpAdapter(
       onChildWorkEvidence: (sessionId, evidence, producer) =>
         context.host()?.publishChildWorkEvidence(sessionId, evidence, producer),
       ...(deps.readProcessStartTime ? { readProcessStartTime: deps.readProcessStartTime } : {}),
-      onDispatchSettledLate: followUps.onDispatchSettledLate,
+      onDispatchSettledLate: (settlement) => void followUps.onDispatchSettledLate(settlement),
       logger: deps.logger,
       onEvent: context.deliverLifecycle
     })

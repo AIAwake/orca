@@ -176,7 +176,7 @@ export class WatcherProcessSupervisor {
           reportTerminalError: reportWatcherTerminalError,
           restartChild: () => this.restartAfterCancelledSubscribe(child)
         }),
-      restartAfterCancelledSubscribe: (child) => this.restartAfterCancelledSubscribe(child),
+      restartAfterCancelledSubscribe: (child) => void this.restartAfterCancelledSubscribe(child),
       terminateUnavailableChild: (child) => {
         if (child) {
           this.terminateUnavailableChild(child)
