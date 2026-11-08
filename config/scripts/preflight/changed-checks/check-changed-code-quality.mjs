@@ -8,7 +8,7 @@ import { scanAstGrep } from '../../static-analysis/structural-scan/ast-grep-scan
 import { resolvePullRequestDiffBase } from '../../git/pr-diff-base/git-pull-request-diff-base.mjs'
 import { resolveOxlintInvocation } from '../../tool-invocation/oxlint-cli-invocation.mjs'
 import { createExistingTypeAssertionMatcher } from '../../static-analysis/type-assertion-budget/existing-type-assertions.mjs'
-import { TYPE_AWARE_DISABLE_PATTERN } from './type-aware-directive-pattern.mjs'
+import { SECONDARY_SCAN_DISABLE_PATTERN } from './secondary-scan-directive-pattern.mjs'
 
 const SOURCE_FILE_PATTERN = /\.(?:[cm]?[jt]sx?)$/
 const ROOT_CODE_QUALITY_IGNORED_PREFIXES = ['cloud/']
@@ -506,7 +506,7 @@ export function isUnloadedPluginDirectiveUnusedWarning(diagnostic, root, scanLab
         ANTI_SLOP_DISABLE_PATTERN.test(line) ||
         REACT_DOCTOR_DISABLE_PATTERN.test(line) ||
         JS_PLUGIN_DISABLE_PATTERN.test(line) ||
-        (scanLabel === 'code quality' && TYPE_AWARE_DISABLE_PATTERN.test(line))
+        (scanLabel === 'code quality' && SECONDARY_SCAN_DISABLE_PATTERN.test(line))
     )
   )
 }

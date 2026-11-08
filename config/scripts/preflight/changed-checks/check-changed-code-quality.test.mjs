@@ -146,8 +146,8 @@ describe('moved-code exemption', () => {
   })
 })
 
-describe('type-aware directive exemption', () => {
-  it('exempts type-aware-only directives from the untyped root scan alone', () => {
+describe('secondary-scan directive exemption', () => {
+  it('exempts type-aware and import-plugin directives from the root scan alone', () => {
     const root = mkdtempSync(path.join(tmpdir(), 'changed-code-quality-type-aware-'))
     try {
       writeFileSync(
@@ -155,7 +155,8 @@ describe('type-aware directive exemption', () => {
         [
           '// oxlint-disable-next-line typescript/return-await -- catch must not cover this',
           '// oxlint-disable-next-line typescript/return-await-extra -- unknown rule',
-          '// oxlint-disable-next-line no-console -- root rule'
+          '// oxlint-disable-next-line no-console -- root rule',
+          '// oxlint-disable-next-line import/no-cycle -- singleton hub'
         ].join('\n')
       )
       const unused = (line) => ({
@@ -169,6 +170,7 @@ describe('type-aware directive exemption', () => {
       expect(exempt(1, 'type-aware code quality')).toBe(false)
       expect(exempt(2, 'code quality')).toBe(false)
       expect(exempt(3, 'code quality')).toBe(false)
+      expect(exempt(4, 'code quality')).toBe(true)
     } finally {
       rmSync(root, { recursive: true, force: true })
     }
