@@ -54,7 +54,7 @@ it('lets the 1 Hz tick sleep while every row has settled, with each run frozen',
   const rows = screen.getAllByRole('listitem').map((row) => row.textContent)
   expect(rows).toEqual(['child a · Agent2m 0s', 'child b · Agent1m 0s'])
   committed.mockClear()
-  act(() => vi.advanceTimersByTime(5_000))
+  void act(() => vi.advanceTimersByTime(5_000))
   expect(committed).not.toHaveBeenCalled()
   expect(vi.getTimerCount()).toBe(0)
 })

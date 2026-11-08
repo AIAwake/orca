@@ -36,7 +36,7 @@ export function AgentDashboardSettingsMenu({
     if (next === mode) {
       return
     }
-    updateSettings({ experimentalAgentDashboardMode: next })
+    void updateSettings({ experimentalAgentDashboardMode: next })
     if (next === 'popout') {
       onSwitchToPopout()
     }

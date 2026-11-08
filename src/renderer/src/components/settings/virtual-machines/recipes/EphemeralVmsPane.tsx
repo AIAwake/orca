@@ -105,7 +105,7 @@ export function EphemeralVmsPane(): React.JSX.Element {
   const copyPrompt = async (): Promise<void> => {
     try {
       await window.api.ui.writeClipboardText(AGENT_PROMPT)
-      useAppStore.getState().recordFeatureInteraction('ephemeral-vm-setup')
+      void useAppStore.getState().recordFeatureInteraction('ephemeral-vm-setup')
       if (!mountedRef.current) {
         return
       }

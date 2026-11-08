@@ -149,13 +149,13 @@ export function RemoteFileBrowser({
       setFilter('')
       resetPreviewForNavigation()
       clearFileHint()
-      loadDir(dirPath)
+      void loadDir(dirPath)
     },
     [loadDir, clearFileHint, resetPreviewForNavigation]
   )
 
   useEffect(() => {
-    loadDir(initialPath)
+    void loadDir(initialPath)
   }, [loadDir, initialPath])
 
   const navigateInto = useCallback(

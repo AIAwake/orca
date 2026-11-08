@@ -123,7 +123,7 @@ export function createTabsMoveActions(
         }
       })
       if (moved && opts?.recordInteraction !== false) {
-        get().recordFeatureInteraction?.('tab-splits')
+        void get().recordFeatureInteraction?.('tab-splits')
       }
       return moved
     }

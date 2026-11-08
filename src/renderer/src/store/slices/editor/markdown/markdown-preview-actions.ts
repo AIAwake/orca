@@ -64,7 +64,7 @@ export function createMarkdownPreviewActions(
         'Failed to create untitled markdown file.'
       )
       if (created) {
-        get().recordFeatureInteraction('markdown-file-created')
+        void get().recordFeatureInteraction('markdown-file-created')
       }
     },
 

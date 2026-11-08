@@ -15,7 +15,7 @@ export function BrowserUseSkillSetupCard(props: {
   const activeSkillRuntime = useActiveProjectSkillRuntime()
 
   const handleBeforeInstall = (): void => {
-    useAppStore.getState().recordFeatureInteraction('agent-browser-setup')
+    void useAppStore.getState().recordFeatureInteraction('agent-browser-setup')
     localStorage.setItem(BROWSER_USE_ENABLED_STORAGE_KEY, '1')
   }
 

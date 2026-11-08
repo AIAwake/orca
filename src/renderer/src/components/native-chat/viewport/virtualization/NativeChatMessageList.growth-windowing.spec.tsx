@@ -143,7 +143,9 @@ describe('transcript follow ownership across growth and appends', () => {
 
     setMeasuredTail(8)
     expect(scroller.scrollHeight - before).toBe(tailHeightAt(8) - tailHeightAt(4))
-    act(() => deliverResizes((target) => target.hasAttribute('data-native-chat-transcript-column')))
+    void act(() =>
+      deliverResizes((target) => target.hasAttribute('data-native-chat-transcript-column'))
+    )
     expect(distanceFromBottom(container)).toBe(0)
     const pinned = scroller.scrollTop
 

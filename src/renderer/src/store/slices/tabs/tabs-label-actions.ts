@@ -201,7 +201,7 @@ export function createTabsLabelActions(
         }
       }
       if (reordered && opts?.recordInteraction !== false) {
-        get().recordFeatureInteraction?.('terminal-tabs')
+        void get().recordFeatureInteraction?.('terminal-tabs')
       }
     },
 
@@ -228,7 +228,7 @@ export function createTabsLabelActions(
       const exists = get().getTab(tabId) !== null
       set((state) => patchTab(state.unifiedTabsByWorktree, tabId, { customLabel: label }) ?? state)
       if (exists && opts?.recordInteraction !== false) {
-        get().recordFeatureInteraction?.('terminal-tabs')
+        void get().recordFeatureInteraction?.('terminal-tabs')
       }
     },
 
@@ -236,7 +236,7 @@ export function createTabsLabelActions(
       const exists = get().getTab(tabId) !== null
       set((state) => patchTab(state.unifiedTabsByWorktree, tabId, { color }) ?? state)
       if (exists && opts?.recordInteraction !== false) {
-        get().recordFeatureInteraction?.('terminal-tabs')
+        void get().recordFeatureInteraction?.('terminal-tabs')
       }
     },
 
@@ -283,7 +283,7 @@ export function createTabsLabelActions(
         promotePreviewTabsThroughLayoutOwner(get(), set, [before])
       }
       if (exists && opts?.recordInteraction !== false) {
-        get().recordFeatureInteraction?.('terminal-tabs')
+        void get().recordFeatureInteraction?.('terminal-tabs')
       }
     },
 
@@ -320,7 +320,7 @@ export function createTabsLabelActions(
       })
       mirrorTabPinnedToHost(get(), tabId, false)
       if (exists && opts?.recordInteraction !== false) {
-        get().recordFeatureInteraction?.('terminal-tabs')
+        void get().recordFeatureInteraction?.('terminal-tabs')
       }
     }
   }

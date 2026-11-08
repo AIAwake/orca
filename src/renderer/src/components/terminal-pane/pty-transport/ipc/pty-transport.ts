@@ -192,7 +192,7 @@ export function createIpcPtyTransport(opts: IpcPtyTransportOptions = {}): PtyTra
       handlers.clearAccumulatedState()
       if (id) {
         try {
-          window.api.pty.kill(id)
+          void window.api.pty.kill(id)
         } finally {
           handlers.unregisterAll(id)
           storedCallbacks.onDisconnect?.()

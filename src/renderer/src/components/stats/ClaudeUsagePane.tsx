@@ -70,7 +70,7 @@ export function ClaudeUsagePane(): React.JSX.Element {
   }, [fetchClaudeUsage])
 
   const handleSetEnabled = (enabled: boolean): void => {
-    recordFeatureInteraction('usage-tracking')
+    void recordFeatureInteraction('usage-tracking')
     void setClaudeUsageEnabled(enabled)
   }
 

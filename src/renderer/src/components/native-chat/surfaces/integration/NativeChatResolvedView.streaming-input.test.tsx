@@ -121,7 +121,7 @@ describe('preview input allocation at realistic history sizes', () => {
       </TooltipProvider>
     )
     previewTicks(transcript)
-    act(() => fireEvent.click(screen.getByRole('button', { name: 'send' })))
+    void act(() => fireEvent.click(screen.getByRole('button', { name: 'send' })))
     const queued = probe.inputs.at(-1)!
     expect(queued).toHaveLength(size + 1)
     expect(queued.at(-1)?.pendingSend).toBe('queued')

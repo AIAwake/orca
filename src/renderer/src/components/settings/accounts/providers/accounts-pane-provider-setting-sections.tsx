@@ -69,7 +69,7 @@ export function renderGeminiAccountsSection(model: AccountsPaneSectionModel): Re
             checked={settings.geminiCliOAuthEnabled}
             onCheckedChange={(checked) => {
               recordFeatureInteraction('usage-tracking')
-              updateSettings({
+              void updateSettings({
                 geminiCliOAuthEnabled: checked
               })
             }}
@@ -135,7 +135,7 @@ export function renderOpenCodeAccountsSection(model: AccountsPaneSectionModel): 
                 size="xs"
                 onClick={() => {
                   recordFeatureInteraction('usage-tracking')
-                  updateSettings({ opencodeSessionCookie: '' })
+                  void updateSettings({ opencodeSessionCookie: '' })
                 }}
                 className="h-7 shrink-0 text-xs text-muted-foreground hover:text-foreground"
               >
@@ -195,7 +195,7 @@ export function renderOpenCodeAccountsSection(model: AccountsPaneSectionModel): 
                 size="xs"
                 onClick={() => {
                   recordFeatureInteraction('usage-tracking')
-                  updateSettings({ opencodeWorkspaceId: '' })
+                  void updateSettings({ opencodeWorkspaceId: '' })
                 }}
                 className="h-7 shrink-0 text-xs text-muted-foreground hover:text-foreground"
               >

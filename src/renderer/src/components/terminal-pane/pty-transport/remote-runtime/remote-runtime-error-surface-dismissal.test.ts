@@ -65,6 +65,6 @@ describe('remote runtime error surface dismissal', () => {
     // The memory re-arms: repeats after the re-surfaced error are suppressed again until the next dismissal.
     expect(await transport.sendInputAccepted?.('d', 'driving')).toBe(false)
     expect(onError).toHaveBeenCalledTimes(2)
-    transport.destroy?.()
+    void transport.destroy?.()
   })
 })

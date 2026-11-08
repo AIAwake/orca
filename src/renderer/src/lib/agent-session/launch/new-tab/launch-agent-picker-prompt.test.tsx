@@ -160,7 +160,7 @@ it.each(
     expect(readNativeChatComposerDraft(scope).text).toBe('review this change')
 
     fireEvent.change(argumentsInput, { target: { value: '--add-dir docs' } })
-    act(() =>
+    void act(() =>
       promptEditor(editor()).commands.setContent({
         type: 'doc',
         content: [
@@ -272,7 +272,7 @@ it.each([true, false])(
       .mockImplementation((args) => actualLaunch({ ...args, launchPlatform: 'linux' }))
     render(<Menu route="menu" selected={selected} />)
     fireEvent.click(document.querySelector('button[aria-label="Configure Codex"]')!)
-    act(() =>
+    void act(() =>
       promptEditor(editor()).commands.setContent({
         type: 'doc',
         content: [

@@ -137,7 +137,7 @@ describe('Use a Node.js mirror', () => {
     useAppStore.setState({
       settings: settingsWithMirror('https://m.example/node')
     })
-    act(() => options.action.onClick())
+    void act(() => options.action.onClick())
     expect(useAppStore.getState().activeModal).toBe('none')
     expect(useAppStore.getState().activeView).toBe('settings')
   })
@@ -153,7 +153,7 @@ describe('Use a Node.js mirror', () => {
     toastSshConnectFailure('ssh-1', new Error('x'), 'Connection failed')
     const [text, options] = toastError.mock.calls[0]
     expect(text).toContain('Use a Node.js mirror')
-    act(() => options.action.onClick())
+    void act(() => options.action.onClick())
     expect(useAppStore.getState().activeModal).toBe('node-dist-mirror')
     expect(useAppStore.getState().modalData).toEqual({ targetId: 'ssh-1' })
 

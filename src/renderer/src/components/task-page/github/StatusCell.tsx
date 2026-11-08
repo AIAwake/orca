@@ -208,7 +208,7 @@ export function GHStatusCell({
         return
       }
       setDuplicateError(null)
-      handleStateChange('closed', {
+      void handleStateChange('closed', {
         stateReason: 'duplicate',
         duplicateOf: validation.duplicateOf
       })
@@ -284,7 +284,7 @@ export function GHStatusCell({
             <button
               type="button"
               onClick={() => {
-                handleStateChange('open')
+                void handleStateChange('open')
                 setOpen(false)
               }}
               className={cn(
@@ -298,7 +298,7 @@ export function GHStatusCell({
             <button
               type="button"
               onClick={() => {
-                handleStateChange('closed', {
+                void handleStateChange('closed', {
                   stateReason: 'completed'
                 })
                 setOpen(false)
@@ -314,7 +314,7 @@ export function GHStatusCell({
             <button
               type="button"
               onClick={() => {
-                handleStateChange('closed', {
+                void handleStateChange('closed', {
                   stateReason: 'not_planned'
                 })
                 setOpen(false)

@@ -110,7 +110,7 @@ export const AgentPickerMenuRow = memo(function AgentPickerMenuRow({
           data-search-default={searchDefault || undefined}
           onSelect={() => {
             onSelectAgent?.(entry.agent)
-            runLaunch(pickerLaunchRow(entry, selected?.surface ?? entry.defaultSurface))
+            void runLaunch(pickerLaunchRow(entry, selected?.surface ?? entry.defaultSurface))
           }}
         >
           <AgentIcon agent={entry.agent} size={14} />
