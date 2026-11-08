@@ -1,8 +1,10 @@
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { browserSessionRegistry } from '../../sessions/browser-session-registry'
 import { requestBrowserExtensionInstallPrompt } from './browser-extension-install-prompt'
 import { getBrowserExtensionInstallStore } from '../installation/browser-extension-install-store'
 import { readBrowserExtensionIconDataUrl } from '../installation/browser-extension-manifest'
 import type { BrowserExtensionPermissionSet } from './browser-extension-permission-grants'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { getBrowserExtensionMainWindow } from '../tabs-and-windows/browser-extension-window-model'
 
 /**

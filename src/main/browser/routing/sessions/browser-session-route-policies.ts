@@ -4,6 +4,7 @@ import { isBrowserRoutePartition } from '../partitions/browser-route-identity'
 import {
   clearBrowserSessionPartitionPolicies,
   installBrowserSessionPartitionPolicies
+  // oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 } from '../../sessions/browser-session-partition-policies'
 
 export function installBrowserRoutePartitionPolicies(

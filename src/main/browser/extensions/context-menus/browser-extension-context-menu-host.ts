@@ -4,7 +4,9 @@ import type {
   BrowserExtensionContextMenuGroup,
   BrowserExtensionContextMenuPayload
 } from '../../../../shared/browser/extensions/browser-extension-context-menu-types'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { chromeFrameId } from '../api/web-navigation'
+// oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 import { noteBrowserExtensionUserGesture } from '../api/permissions'
 import {
   emitBrowserExtensionEvent,
@@ -32,6 +34,7 @@ import { isBrowserExtensionSupportEnabled } from '../browser-extension-support'
 import {
   describeBrowserExtensionTab,
   resolveBrowserExtensionTab
+  // oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 } from '../tabs-and-windows/browser-extension-tab-model'
 
 /** What a click needs, kept in main so the renderer only names a token and an item key. */

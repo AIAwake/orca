@@ -16,6 +16,7 @@ import { watchBrowserExtensionPopupSize } from './browser-extension-popup-size-w
 import {
   getBrowserExtensionMainWindow,
   presentBrowserExtensionWindow
+  // oxlint-disable-next-line import/no-cycle -- browser subsystem singleton hub (browserManager); breaking it needs DI and test-mock updates, left for a human
 } from '../tabs-and-windows/browser-extension-window-model'
 
 type OpenPopup = {
