@@ -23,7 +23,7 @@ export async function connectSshTargetFromStatusMenu(targetId: string): Promise<
   beginSshConnect(targetId)
   try {
     await window.api.ssh.connect({ targetId })
-    useAppStore.getState().recordFeatureInteraction('ssh')
+    void useAppStore.getState().recordFeatureInteraction('ssh')
   } catch (err) {
     toastSshConnectFailure(
       targetId,
@@ -65,7 +65,7 @@ export function SshTargetStatusRow({
     setBusy(true)
     try {
       await window.api.ssh.disconnect({ targetId })
-      recordFeatureInteraction('ssh')
+      void recordFeatureInteraction('ssh')
     } catch (err) {
       toast.error(
         err instanceof Error

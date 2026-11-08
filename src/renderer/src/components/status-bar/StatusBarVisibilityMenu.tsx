@@ -42,7 +42,7 @@ export function StatusBarVisibilityMenu({
           <DropdownMenuCheckboxItem
             checked={statusBarItems.includes('claude')}
             onCheckedChange={() => {
-              recordFeatureInteraction('usage-tracking')
+              void recordFeatureInteraction('usage-tracking')
               toggleStatusBarItem('claude')
             }}
           >
@@ -54,7 +54,7 @@ export function StatusBarVisibilityMenu({
           <DropdownMenuCheckboxItem
             checked={statusBarItems.includes('codex')}
             onCheckedChange={() => {
-              recordFeatureInteraction('usage-tracking')
+              void recordFeatureInteraction('usage-tracking')
               toggleStatusBarItem('codex')
             }}
           >
@@ -66,7 +66,7 @@ export function StatusBarVisibilityMenu({
           <DropdownMenuCheckboxItem
             checked={statusBarItems.includes('gemini')}
             onCheckedChange={() => {
-              recordFeatureInteraction('usage-tracking')
+              void recordFeatureInteraction('usage-tracking')
               toggleStatusBarItem('gemini')
             }}
           >
@@ -78,7 +78,7 @@ export function StatusBarVisibilityMenu({
           <DropdownMenuCheckboxItem
             checked={statusBarItems.includes('antigravity')}
             onCheckedChange={() => {
-              recordFeatureInteraction('usage-tracking')
+              void recordFeatureInteraction('usage-tracking')
               toggleStatusBarItem('antigravity')
             }}
           >
@@ -92,7 +92,7 @@ export function StatusBarVisibilityMenu({
         <DropdownMenuCheckboxItem
           checked={statusBarItems.includes('opencode-go')}
           onCheckedChange={() => {
-            recordFeatureInteraction('usage-tracking')
+            void recordFeatureInteraction('usage-tracking')
             toggleStatusBarItem('opencode-go')
           }}
         >
@@ -103,7 +103,7 @@ export function StatusBarVisibilityMenu({
           <DropdownMenuCheckboxItem
             checked={statusBarItems.includes('kimi')}
             onCheckedChange={() => {
-              recordFeatureInteraction('usage-tracking')
+              void recordFeatureInteraction('usage-tracking')
               toggleStatusBarItem('kimi')
             }}
           >
@@ -114,7 +114,7 @@ export function StatusBarVisibilityMenu({
         <DropdownMenuCheckboxItem
           checked={statusBarItems.includes('minimax')}
           onCheckedChange={() => {
-            recordFeatureInteraction('usage-tracking')
+            void recordFeatureInteraction('usage-tracking')
             toggleStatusBarItem('minimax')
           }}
         >
@@ -125,7 +125,7 @@ export function StatusBarVisibilityMenu({
           <DropdownMenuCheckboxItem
             checked={statusBarItems.includes('grok')}
             onCheckedChange={() => {
-              recordFeatureInteraction('usage-tracking')
+              void recordFeatureInteraction('usage-tracking')
               toggleStatusBarItem('grok')
             }}
           >
@@ -137,7 +137,7 @@ export function StatusBarVisibilityMenu({
           <DropdownMenuCheckboxItem
             checked={statusBarItems.includes('zcode')}
             onCheckedChange={() => {
-              recordFeatureInteraction('usage-tracking')
+              void recordFeatureInteraction('usage-tracking')
               toggleStatusBarItem('zcode')
             }}
           >
@@ -149,7 +149,7 @@ export function StatusBarVisibilityMenu({
           <DropdownMenuCheckboxItem
             checked={statusBarItems.includes('muse')}
             onCheckedChange={() => {
-              recordFeatureInteraction('usage-tracking')
+              void recordFeatureInteraction('usage-tracking')
               toggleStatusBarItem('muse')
             }}
           >
@@ -160,7 +160,7 @@ export function StatusBarVisibilityMenu({
         <DropdownMenuCheckboxItem
           checked={statusBarItems.includes('cursor')}
           onCheckedChange={() => {
-            recordFeatureInteraction('usage-tracking')
+            void recordFeatureInteraction('usage-tracking')
             toggleStatusBarItem('cursor')
           }}
         >
@@ -170,7 +170,7 @@ export function StatusBarVisibilityMenu({
         <DropdownMenuCheckboxItem
           checked={statusBarItems.includes('ssh')}
           onCheckedChange={() => {
-            recordFeatureInteraction('ssh')
+            void recordFeatureInteraction('ssh')
             toggleStatusBarItem('ssh')
           }}
         >
@@ -180,7 +180,7 @@ export function StatusBarVisibilityMenu({
         <DropdownMenuCheckboxItem
           checked={statusBarItems.includes('resource-usage')}
           onCheckedChange={() => {
-            recordFeatureInteraction('resource-manager')
+            void recordFeatureInteraction('resource-manager')
             toggleStatusBarItem('resource-usage')
           }}
         >
@@ -190,7 +190,7 @@ export function StatusBarVisibilityMenu({
         <DropdownMenuCheckboxItem
           checked={statusBarItems.includes('ports')}
           onCheckedChange={() => {
-            recordFeatureInteraction('ports')
+            void recordFeatureInteraction('ports')
             toggleStatusBarItem('ports')
           }}
         >

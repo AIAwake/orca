@@ -65,8 +65,8 @@ describe('createUISlice feature interactions', () => {
     const store = createUIStore()
     store.getState().hydratePersistedUI(makePersistedUI())
 
-    store.getState().recordFeatureInteraction('tasks')
-    store.getState().recordFeatureInteraction('tasks')
+    void store.getState().recordFeatureInteraction('tasks')
+    void store.getState().recordFeatureInteraction('tasks')
 
     pending[1](
       makePersistedUI({

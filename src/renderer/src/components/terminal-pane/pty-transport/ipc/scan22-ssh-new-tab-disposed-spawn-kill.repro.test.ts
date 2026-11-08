@@ -34,7 +34,7 @@ describe('scan22: disposed mid-spawn SSH transport vs successor on the same PTY'
     const first = createIpcPtyTransport(paneOptions)
     const firstConnect = first.connect({ url: '', callbacks: {} })
     // Pane remount (generation bump / recovery / park flip) while spawn is in flight.
-    first.destroy?.()
+    void first.destroy?.()
 
     const successor = createIpcPtyTransport(paneOptions)
     await successor.connect({ url: '', callbacks: {} })

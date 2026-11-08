@@ -35,13 +35,13 @@ export function runBrowserGrabActionShortcut({
     if (key === 'c') {
       const text = formatGrabPayloadAsText(payload)
       void window.api.ui.writeClipboardText(text)
-      recordFeatureInteraction('browser-grab')
+      void recordFeatureInteraction('browser-grab')
       showGrabToast('Copied', 'success', payload)
     } else {
       const dataUrl = payload.screenshot?.dataUrl
       if (dataUrl?.startsWith('data:image/png;base64,')) {
         void window.api.ui.writeClipboardImage(dataUrl)
-        recordFeatureInteraction('browser-grab')
+        void recordFeatureInteraction('browser-grab')
         showGrabToast('Screenshotted', 'success', payload)
       } else {
         showGrabToast('No screenshot available', 'error', payload)

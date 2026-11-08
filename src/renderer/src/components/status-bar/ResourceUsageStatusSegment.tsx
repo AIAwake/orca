@@ -81,7 +81,7 @@ export function ResourceUsageStatusSegment({
       open={open}
       onOpenChange={(nextOpen) => {
         if (nextOpen) {
-          recordFeatureInteraction('resource-manager')
+          void recordFeatureInteraction('resource-manager')
         }
         setOpen(nextOpen)
       }}

@@ -65,7 +65,7 @@ describe('useNativeChatSteerChordPreview', () => {
     const button = view.getByRole('button')
     const hold = () => {
       fireEvent.keyDown(field, { key: 'Meta' })
-      act(() => vi.advanceTimersByTime(NATIVE_CHAT_STEER_CHORD_HOLD_MS))
+      void act(() => vi.advanceTimersByTime(NATIVE_CHAT_STEER_CHORD_HOLD_MS))
     }
     return { props, view, field, button, hold, preview: () => button.dataset.preview }
   }
@@ -74,7 +74,7 @@ describe('useNativeChatSteerChordPreview', () => {
     const { field, preview } = setup()
     fireEvent.keyDown(field, { key: 'Meta' })
     fireEvent.keyDown(field, { key: 'c', metaKey: true })
-    act(() => vi.advanceTimersByTime(NATIVE_CHAT_STEER_CHORD_HOLD_MS * 2))
+    void act(() => vi.advanceTimersByTime(NATIVE_CHAT_STEER_CHORD_HOLD_MS * 2))
     expect(preview()).toBe('')
   })
 
@@ -90,7 +90,7 @@ describe('useNativeChatSteerChordPreview', () => {
   it('shows nothing while an IME composes, since the IME owns Enter then', () => {
     const { field, preview } = setup({ hasDraft: true })
     fireEvent.keyDown(field, { key: 'Meta', isComposing: true })
-    act(() => vi.advanceTimersByTime(NATIVE_CHAT_STEER_CHORD_HOLD_MS))
+    void act(() => vi.advanceTimersByTime(NATIVE_CHAT_STEER_CHORD_HOLD_MS))
     expect(preview()).toBe('')
   })
 

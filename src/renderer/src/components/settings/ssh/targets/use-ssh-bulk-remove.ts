@@ -50,7 +50,7 @@ export function useSshBulkRemove(args: {
     })
     skippedRef.current = []
     if (result.removed.length > 0) {
-      recordFeatureInteraction('ssh')
+      void recordFeatureInteraction('ssh')
       await args.reload()
     }
     if (!mountedRef.current) {

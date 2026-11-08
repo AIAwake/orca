@@ -155,7 +155,7 @@ export function AgentLaunchSetupPanel({
           const primary = mode === 'select' ? draft.surface : entry.defaultSurface
           const alternate = entry.surfaces.find((surface) => surface !== primary)
           if (alternate && !disabled && !event.repeat) {
-            use(alternate)
+            void use(alternate)
           }
         }
       }}
@@ -168,7 +168,7 @@ export function AgentLaunchSetupPanel({
           (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)
         ) {
           event.preventDefault()
-          use(mode === 'select' ? draft.surface : entry.defaultSurface)
+          void use(mode === 'select' ? draft.surface : entry.defaultSurface)
         }
       }}
     >
@@ -186,7 +186,7 @@ export function AgentLaunchSetupPanel({
           ) {
             event.preventDefault()
             event.stopPropagation()
-            use(mode === 'select' ? draft.surface : entry.defaultSurface)
+            void use(mode === 'select' ? draft.surface : entry.defaultSurface)
           }
         }}
         onKeyDown={(event) => {

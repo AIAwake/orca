@@ -81,7 +81,7 @@ export function LinearIssueCommentFooter({
       }
       if (typed.ok) {
         setBody('')
-        useAppStore.getState().recordFeatureInteraction('linear-tasks')
+        void useAppStore.getState().recordFeatureInteraction('linear-tasks')
         onCommentAdded({
           id: typed.id ?? createBrowserUuid(),
           body: bodyState.body,
@@ -113,7 +113,7 @@ export function LinearIssueCommentFooter({
     (e: React.KeyboardEvent) => {
       if (isScreenSubmitShortcut(e)) {
         e.preventDefault()
-        handleSubmit()
+        void handleSubmit()
       }
     },
     [handleSubmit]

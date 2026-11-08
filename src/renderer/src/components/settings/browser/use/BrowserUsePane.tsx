@@ -43,7 +43,7 @@ export function BrowserUseSetup({
     setBrowserUseEnabled(value)
     localStorage.setItem(BROWSER_USE_ENABLED_STORAGE_KEY, value ? '1' : '0')
     if (value) {
-      useAppStore.getState().recordFeatureInteraction('agent-browser-setup')
+      void useAppStore.getState().recordFeatureInteraction('agent-browser-setup')
     }
   }
 
@@ -163,7 +163,7 @@ export function BrowserUseSetup({
             skillError={activeSkillRuntime.installDisabledReason ?? skillError}
             disabled={skillDisabled}
             onBeforeInstall={() => {
-              useAppStore.getState().recordFeatureInteraction('agent-browser-setup')
+              void useAppStore.getState().recordFeatureInteraction('agent-browser-setup')
             }}
             onRecheck={refreshSkill}
           />

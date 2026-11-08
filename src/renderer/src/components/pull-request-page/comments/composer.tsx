@@ -135,7 +135,7 @@ export function GHCommentComposer({
     (e: React.KeyboardEvent) => {
       if (isScreenSubmitShortcut(e)) {
         e.preventDefault()
-        handleSubmit()
+        void handleSubmit()
       }
     },
     [handleSubmit]

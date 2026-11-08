@@ -221,7 +221,7 @@ export function DictationController() {
         await finishDictationSession(sessionRef.current)
         return
       }
-      recordFeatureInteraction('voice-dictation')
+      void recordFeatureInteraction('voice-dictation')
     } catch (err) {
       if (!isCurrent()) {
         return

@@ -203,7 +203,7 @@ export function AddRemoteHostDialog({
     setPreferAdvancedOpen(openAdvanced)
     setConfigFilledAlias(host.alias)
     setSshView('form')
-    recordFeatureInteraction('ssh')
+    void recordFeatureInteraction('ssh')
     toast.success(
       translate(
         'auto.components.sidebar.AddRemoteHostDialog.sshConfigPickerFilled',

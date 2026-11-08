@@ -256,7 +256,7 @@ describe('picker window launch contract', () => {
                 onClick: () => runLaunch(option.row!, option.setup, entry),
                 onUseAgent: (draft) => {
                   const configured = configuredAgentPickerLaunchOption(option, draft)
-                  runLaunch(configured.row!, configured.setup, entry)
+                  void runLaunch(configured.row!, configured.setup, entry)
                 }
               })
             : createElement(
@@ -435,7 +435,7 @@ it('keeps pristine, edited and reopened historical-host picker launches free of 
             onDraftChange: setup.change,
             onUse: (draft) => {
               if (setup.accept(draft)) {
-                launch(row, draft, entry)
+                void launch(row, draft, entry)
               }
             }
           })

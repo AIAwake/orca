@@ -54,7 +54,7 @@ describe('dictation insertion target', () => {
     })
     const text = 'x'.repeat(TEXT_CONTROL_PASTE_DIRECT_MAX_BYTES + 1)
 
-    insertText(text, { kind: 'contentEditable', element: editor })
+    void insertText(text, { kind: 'contentEditable', element: editor })
     await vi.runAllTimersAsync()
 
     expect(execCommand).toHaveBeenCalledTimes(1)
@@ -68,7 +68,7 @@ describe('dictation insertion target', () => {
     const execCommand = installExecCommandMock(() => true)
     const text = '😀'.repeat(Math.floor(TEXT_CONTROL_PASTE_MAX_BYTES / 4) + 1)
 
-    insertText(text, { kind: 'contentEditable', element: editor })
+    void insertText(text, { kind: 'contentEditable', element: editor })
     await vi.runAllTimersAsync()
 
     expect(execCommand).not.toHaveBeenCalled()
