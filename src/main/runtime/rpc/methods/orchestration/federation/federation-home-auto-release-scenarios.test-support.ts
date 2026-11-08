@@ -5,10 +5,8 @@ import {
   ORCHESTRATION_CONTRACT_VERSION,
   ORCHESTRATION_WORKER_AUTO_RELEASE_RUNTIME_CAPABILITY
 } from '../../../../../../shared/protocol-version'
-import {
-  GRACE_MS,
-  type AutoReleaseScenarioHarness
-} from './federation-auto-release-scenarios.test-support'
+import type { AutoReleaseScenarioHarness } from './federation-auto-release-scenarios.test-support'
+import { GRACE_MS } from './federation-auto-release-grace.test-support'
 
 export function registerHomeAutoReleaseScenarios(args: {
   harness: AutoReleaseScenarioHarness
