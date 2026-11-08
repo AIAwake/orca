@@ -47,7 +47,7 @@ vi.mock(
 vi.mock('child_process', async (importOriginal) => {
   const actual = await importOriginal<typeof ChildProcess>()
   const { createChildProcessModuleMock } = await import('./index-test-harness.js')
-  return { ...actual, ...createChildProcessModuleMock(spawnMock) }
+  return { ...actual, ...(await createChildProcessModuleMock(spawnMock)) }
 })
 
 import { main } from './index'

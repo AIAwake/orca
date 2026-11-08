@@ -114,7 +114,7 @@ export function AddRemoteHostDialog({
         ssh: window.api.ssh,
         recordSshRepoReadoptions,
         setSshTargetsMetadata,
-        recordFeatureInteraction
+        recordFeatureInteraction: (feature) => void recordFeatureInteraction(feature)
       })
       if (outcome === 'saved') {
         reset()
@@ -220,7 +220,7 @@ export function AddRemoteHostDialog({
         ssh: window.api.ssh,
         recordSshRepoReadoptions,
         setSshTargetsMetadata,
-        recordFeatureInteraction
+        recordFeatureInteraction: (feature) => void recordFeatureInteraction(feature)
       })
       if (result.kind === 'added') {
         reset()
