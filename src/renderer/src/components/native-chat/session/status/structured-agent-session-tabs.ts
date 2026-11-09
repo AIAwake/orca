@@ -30,19 +30,22 @@ export function getStructuredAgentSessionTabs(
   return tabs
 }
 
-const paneTabs = new WeakMap<Record<string, Tab[]>, ReadonlyMap<string, StructuredTab>>()
+const emptyPaneTabs: ReadonlyMap<string, StructuredTab> = new Map()
+const paneTabs = new WeakMap<Record<string, Tab[]> | Tab[], ReadonlyMap<string, StructuredTab>>()
 export function getStructuredAgentSessionTabsByPaneKey(
-  tabs: Record<string, Tab[]>
+  tabs: Record<string, Tab[]> | Tab[] | undefined
 ): ReadonlyMap<string, StructuredTab> {
+  if (!tabs) {
+    return emptyPaneTabs
+  }
   const cached = paneTabs.get(tabs)
   if (cached) {
     return cached
   }
   const result = new Map(
-    getStructuredAgentSessionTabs(tabs).map((tab) => [
-      structuredAgentSessionPaneKey(tab.id, tab.entityId),
-      tab
-    ])
+    (Array.isArray(tabs) ? tabs.filter(isStructuredTab) : getStructuredAgentSessionTabs(tabs)).map(
+      (tab) => [structuredAgentSessionPaneKey(tab.id, tab.entityId), tab]
+    )
   )
   paneTabs.set(tabs, result)
   return result
