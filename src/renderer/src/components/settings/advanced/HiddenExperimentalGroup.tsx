@@ -6,7 +6,7 @@ import {
   setTerminalRenderDesyncSentinelArmed
 } from '../../terminal-pane/render-health/terminal-render-desync-trigger'
 import { useTranslate } from '@/i18n/use-translate'
-import { getShortcutPlatform } from '@/lib/shortcut-platform'
+import { getShortcutPlatform } from '@/lib/keyboard/shortcut-platform'
 
 // Use shared orange styling to identify unfinished/staff-only controls.
 export function HiddenExperimentalGroup(): React.JSX.Element {

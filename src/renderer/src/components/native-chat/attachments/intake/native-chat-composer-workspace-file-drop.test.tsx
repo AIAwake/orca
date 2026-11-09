@@ -16,7 +16,7 @@ import type { NativeChatComposerInput } from '../../composer/editor/native-chat-
 import { NativeChatComposerField } from '../../composer/editor/NativeChatComposerField'
 import { useNativeChatComposerAttachments } from '../chips/use-native-chat-composer-attachments'
 import { useNativeChatWorkspaceFileDrop } from './use-native-chat-workspace-file-drop'
-import { useImeEnterGestureOwnership } from '@/lib/ime-composition-keyboard-event'
+import { useImeEnterGestureOwnership } from '@/lib/text-input/ime/ime-composition-keyboard-event'
 import type * as RemoteRuntimePtyIdModule from '../../../../../../shared/remote-runtime/remote-runtime-pty-id'
 
 const testState: {

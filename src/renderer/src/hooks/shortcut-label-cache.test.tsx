@@ -5,7 +5,7 @@ import type { KeybindingOverrides } from '../../../shared/keybindings'
 
 const platformRef = vi.hoisted(() => ({ current: 'darwin' as NodeJS.Platform }))
 
-vi.mock('../lib/shortcut-platform', () => ({
+vi.mock('../lib/keyboard/shortcut-platform', () => ({
   getShortcutPlatform: () => platformRef.current
 }))
 

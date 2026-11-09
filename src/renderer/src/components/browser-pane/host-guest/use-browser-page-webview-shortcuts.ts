@@ -6,7 +6,7 @@ import { browserChromeShortcutOwnsEvent } from '../describe-page/browser-overlay
 import type { BrowserChromeShortcutScope } from '../describe-page/browser-page-types'
 import { isEditableKeyboardTarget } from './browser-keyboard'
 import { addBrowserPageZoomEventListener, type BrowserPageZoomCommand } from './browser-page-zoom'
-import { addAppKeyListener, removeAppKeyListener } from '@/lib/app-keyboard-router'
+import { addAppKeyListener, removeAppKeyListener } from '@/lib/keyboard/app-keyboard-router'
 
 /** Handle chrome chords in the renderer and guest chords through main’s IPC; focused guests own a separate WebContents. */
 export function useBrowserPageWebviewShortcuts({

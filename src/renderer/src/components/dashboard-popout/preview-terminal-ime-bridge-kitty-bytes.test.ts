@@ -3,7 +3,7 @@ import { Terminal } from '@xterm/xterm'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { installPreviewImeBridge } from './preview-terminal-ime-bridge'
 
-vi.mock('@/lib/shortcut-platform', () => ({
+vi.mock('@/lib/keyboard/shortcut-platform', () => ({
   getShortcutPlatform: () => 'darwin'
 }))
 

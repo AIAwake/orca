@@ -5,7 +5,7 @@ import {
   CLIPBOARD_IMAGE_MAX_PIXELS,
   CLIPBOARD_IMAGE_MAX_SOURCE_BYTES,
   CLIPBOARD_IMAGE_TOO_LARGE_ERROR
-} from '../../../shared/clipboard-image'
+} from '../../../../../shared/clipboard-image'
 import { convertImageBlobToPng } from './image-blob-png'
 
 const PNG_BYTES = new Uint8Array([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 13])

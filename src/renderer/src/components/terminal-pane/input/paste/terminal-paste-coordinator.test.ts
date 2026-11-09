@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
 
-import '../../../../lib/paste-payload-corpus'
+import '../../../../../../shared/paste-payload-corpus'
 
 import './terminal-bracketed-paste'
 import {

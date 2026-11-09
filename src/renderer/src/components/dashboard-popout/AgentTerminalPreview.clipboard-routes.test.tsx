@@ -13,7 +13,7 @@ import {
   BRACKETED_PASTE_END,
   BRACKETED_PASTE_START
 } from '../../../../shared/terminal/input/terminal-bracketed-paste-text'
-import { dispatchAppMenuPasteEvent } from '@/lib/app-menu-paste'
+import { dispatchAppMenuPasteEvent } from '@/lib/clipboard/menu/app-menu-paste'
 
 const terminalHarness = vi.hoisted(() => ({
   instances: [] as {
@@ -117,7 +117,7 @@ vi.mock('@/components/terminal-pane/input/terminal-user-input-signal', () => ({
 vi.mock('@/hooks/theme/use-system-prefers-dark', () => ({
   useSystemPrefersDark: () => false
 }))
-vi.mock('@/lib/shortcut-platform', () => ({
+vi.mock('@/lib/keyboard/shortcut-platform', () => ({
   getShortcutPlatform: () => platformState.value
 }))
 vi.mock('@/components/terminal-pane/input/ime/terminal-ime-native-text-forwarder', () => ({
