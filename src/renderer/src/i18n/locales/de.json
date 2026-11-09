@@ -16974,8 +16974,7 @@
           "micFallback": "Ausgewähltes Mikrofon nicht verfügbar. Systemstandard wird verwendet.",
           "micDisconnected": "Mikrofon getrennt. Diktat gestoppt.",
           "cloudLimitReached": "Diktat am 10-Minuten-Limit der Cloud gestoppt.",
-          "stoppedAfterSilence": "Nach einer Minute Stille beendet",
-          "retryUnmatched": "Beim erneuten Versuch war nicht erkennbar, welche Wörter schon eingegeben waren, daher wurden alle eingefügt."
+          "stoppedAfterSilence": "Nach einer Minute Stille beendet"
         },
         "dictation-transcript-delivery": {
           "copiedAfterFailedInsert": "Das Diktat konnte nicht eingefügt werden und wurde in die Zwischenablage kopiert.",
@@ -16983,21 +16982,7 @@
           "lost": "Das Diktat konnte weder eingefügt noch kopiert werden."
         },
         "DictationIndicator": {
-          "4977162383": "Zu laut",
-          "finishing": "Wird abgeschlossen…",
-          "listening": "Hört zu…",
-          "cancel": "Abbrechen",
-          "finish": "Fertig",
-          "oneMinuteLeft": "Noch eine Minute.",
-          "sendsWhenLanded": "Sendet, sobald der Text da ist",
-          "entersWhenLanded": "Drückt Enter, sobald der Text da ist"
-        },
-        "DictationPillFailure": {
-          "discard": "Aufnahme verwerfen",
-          "modelFailed": "Modell nicht geladen.",
-          "transcribeFailed": "Nicht erkannt. Aufnahme behalten.",
-          "openSettings": "Einstellungen",
-          "retry": "Wiederholen"
+          "4977162383": "Zu laut"
         }
       },
       "dashboard": {
@@ -17532,13 +17517,10 @@
         },
         "AutomationDetail": {
           "host": "Host",
-          "a1d52c2189": "Abdeckung der Nutzungsdaten",
-          "449fc83bf7": "Tokens",
           "401f40ae79": "Geschätzte Ausgaben",
           "a7c312430d": "Letzte Ausführung",
           "2df8970cd5": "Agent",
           "e353ab9516": "Vorabprüfung",
-          "620b22145e": "Nachholfrist",
           "15ea446b93": "Sitzung",
           "5405a09b1f": "Ausführungsort",
           "2f8baf5360": "Erstellen aus",
@@ -17548,7 +17530,6 @@
           "1f6026358e": "Automatisierung löschen",
           "d79452fb30": "Automatisierung fortsetzen",
           "91a4155e95": "Automatisierung pausieren",
-          "4b1ea02d2e": "Automatisierung bearbeiten",
           "2fb1605beb": "Jetzt ausführen",
           "221916d93c": "Eine Automatisierung erstellen, um Agentenaufgaben zeitlich zu planen.",
           "b09b2384fd": "Pausiert",
@@ -17560,8 +17541,6 @@
           "graceMinutes_other": "{{count}} Minuten",
           "graceHours_one": "{{count}} Stunde",
           "graceHours_other": "{{count}} Stunden",
-          "usageCoverageRuns_one": "{{known}}/{{count}} Ausführung",
-          "usageCoverageRuns_other": "{{known}}/{{count}} Ausführungen",
           "usageUnavailable": "Nicht verfügbar",
           "noRuns": "Keine Ausführungen",
           "projectDefault": "Projektstandard",

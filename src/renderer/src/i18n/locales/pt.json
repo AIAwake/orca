@@ -14381,13 +14381,10 @@
         },
         "AutomationDetail": {
           "host": "Host",
-          "a1d52c2189": "Cobertura de uso",
-          "449fc83bf7": "Tokens",
           "401f40ae79": "Gasto est.",
           "a7c312430d": "Última execução",
           "2df8970cd5": "Agente",
           "e353ab9516": "Pré-verificação",
-          "620b22145e": "Tolerância",
           "15ea446b93": "Sessão",
           "5405a09b1f": "Local de execução",
           "2f8baf5360": "Criar a partir de",
@@ -14397,7 +14394,6 @@
           "1f6026358e": "Excluir automação",
           "d79452fb30": "Retomar automação",
           "91a4155e95": "Pausar automação",
-          "4b1ea02d2e": "Editar automação",
           "2fb1605beb": "Executar Agora",
           "221916d93c": "Crie uma automação para começar a agendar trabalho de agente.",
           "b09b2384fd": "Pausada",
@@ -14411,9 +14407,6 @@
           "graceHours_one": "{{count}} hora",
           "graceHours_other": "{{count}} horas",
           "graceHours_many": "{{count}} horas",
-          "usageCoverageRuns_one": "{{known}}/{{count}} execução",
-          "usageCoverageRuns_other": "{{known}}/{{count}} execuções",
-          "usageCoverageRuns_many": "{{known}}/{{count}} execuções",
           "usageUnavailable": "Indisponível",
           "noRuns": "Nenhuma execução",
           "projectDefault": "Padrão do projeto",
@@ -19259,8 +19252,7 @@
           "micFallback": "O microfone selecionado não está disponível. Usando o padrão do sistema.",
           "micDisconnected": "Microfone desconectado. O ditado foi interrompido.",
           "cloudLimitReached": "O ditado foi interrompido no limite de 10 minutos da nuvem.",
-          "stoppedAfterSilence": "Parou após um minuto de silêncio",
-          "retryUnmatched": "Ao tentar de novo, não foi possível saber quais palavras já estavam digitadas, então todas foram inseridas."
+          "stoppedAfterSilence": "Parou após um minuto de silêncio"
         },
         "dictation-transcript-delivery": {
           "copiedAfterFailedInsert": "Não foi possível inserir o ditado, então ele foi copiado para a área de transferência.",
@@ -19268,21 +19260,7 @@
           "lost": "Não foi possível inserir nem copiar o ditado."
         },
         "DictationIndicator": {
-          "4977162383": "Muito alto",
-          "finishing": "Finalizando…",
-          "listening": "Ouvindo…",
-          "cancel": "Cancelar",
-          "finish": "Concluir",
-          "oneMinuteLeft": "Falta um minuto.",
-          "sendsWhenLanded": "Envia quando o texto chegar",
-          "entersWhenLanded": "Pressiona Enter quando o texto chegar"
-        },
-        "DictationPillFailure": {
-          "discard": "Descartar gravação",
-          "modelFailed": "Modelo não carregou.",
-          "transcribeFailed": "Não transcrito. Gravação mantida.",
-          "openSettings": "Configurações",
-          "retry": "Repetir"
+          "4977162383": "Muito alto"
         }
       },
       "link": {

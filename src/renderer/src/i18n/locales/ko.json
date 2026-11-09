@@ -16298,8 +16298,7 @@
           "micFallback": "선택한 마이크를 사용할 수 없습니다. 시스템 기본값을 사용합니다.",
           "micDisconnected": "마이크 연결이 끊어졌습니다. 받아쓰기가 중지되었습니다.",
           "cloudLimitReached": "클라우드 10분 제한에 도달해 받아쓰기가 중지되었습니다.",
-          "stoppedAfterSilence": "1분 동안 말소리가 없어 중지했습니다.",
-          "retryUnmatched": "다시 시도할 때 이미 입력된 단어를 찾지 못해 전부 삽입했습니다."
+          "stoppedAfterSilence": "1분 동안 말소리가 없어 중지했습니다."
         },
         "dictation-transcript-delivery": {
           "copiedAfterFailedInsert": "받아쓰기를 삽입할 수 없어 클립보드에 복사했습니다.",
@@ -16307,21 +16306,7 @@
           "lost": "받아쓰기를 삽입하거나 복사할 수 없습니다."
         },
         "DictationIndicator": {
-          "4977162383": "음량이 너무 큽니다",
-          "finishing": "마무리 중…",
-          "listening": "듣는 중…",
-          "cancel": "취소",
-          "finish": "완료",
-          "oneMinuteLeft": "1분 남았습니다.",
-          "sendsWhenLanded": "텍스트가 입력되면 전송합니다",
-          "entersWhenLanded": "텍스트가 입력되면 Enter를 누릅니다"
-        },
-        "DictationPillFailure": {
-          "discard": "녹음 삭제",
-          "modelFailed": "음성 모델을 불러오지 못했습니다.",
-          "transcribeFailed": "받아쓰기에 실패했습니다. 녹음은 보관됩니다.",
-          "openSettings": "설정 열기",
-          "retry": "다시 시도"
+          "4977162383": "음량이 너무 큽니다"
         }
       },
       "dashboard": {
@@ -16881,13 +16866,10 @@
         },
         "AutomationDetail": {
           "host": "호스트",
-          "a1d52c2189": "사용 범위",
-          "449fc83bf7": "토큰",
           "401f40ae79": "예상 경비",
           "a7c312430d": "마지막 실행",
           "2df8970cd5": "에이전트",
           "e353ab9516": "사전 확인",
-          "620b22145e": "유예 시간",
           "15ea446b93": "세션",
           "5405a09b1f": "실행 위치",
           "2f8baf5360": "다음에서 생성",
@@ -16897,7 +16879,6 @@
           "1f6026358e": "자동화 삭제",
           "d79452fb30": "자동화 재개",
           "91a4155e95": "자동화 일시 중지",
-          "4b1ea02d2e": "자동화 편집",
           "2fb1605beb": "지금 실행",
           "221916d93c": "agent 작업 예약을 시작하려면 자동화를 만드세요.",
           "b09b2384fd": "일시중지됨",
@@ -16907,7 +16888,6 @@
           "noGrace": "유예 없음",
           "graceMinutes_other": "{{count}}분",
           "graceHours_other": "{{count}}시간",
-          "usageCoverageRuns_other": "실행 {{known}}/{{count}}회",
           "usageUnavailable": "사용할 수 없음",
           "noRuns": "실행 없음",
           "projectDefault": "프로젝트 기본값",
